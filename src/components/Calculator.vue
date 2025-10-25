@@ -8,9 +8,10 @@
           :label="i18n.attributes.strength"
           placeholder="0"
           v-model.number="formInputs.strength"
-          :validation="`required|min:0|max:${maxValues.strength}`"
+          :validation="`required|min:0|max:${i18n.maxValues.strength}`"
           min="0"
-          :max="maxValues.strength"
+          :max="i18n.maxValues.strength"
+          :validation-messages="{ max: i18n.validation.strength }"
         />
         <FormKit
           type="number"
@@ -18,9 +19,10 @@
           :label="i18n.attributes.intellect"
           placeholder="0"
           v-model.number="formInputs.intellect"
-          :validation="`required|min:0|max:${maxValues.intellect}`"
+          :validation="`required|min:0|max:${i18n.maxValues.intellect}`"
           min="0"
-          :max="maxValues.intellect"
+          :max="i18n.maxValues.intellect"
+          :validation-messages="{ max: i18n.validation.intellect }"
         />
         <FormKit
           type="number"
@@ -28,9 +30,10 @@
           :label="i18n.attributes.agility"
           placeholder="0"
           v-model.number="formInputs.agility"
-          :validation="`required|min:0|max:${maxValues.agility}`"
+          :validation="`required|min:0|max:${i18n.maxValues.agility}`"
           min="0"
-          :max="maxValues.agility"
+          :max="i18n.maxValues.agility"
+          :validation-messages="{ max: i18n.validation.agility }"
         />
         <FormKit
           type="number"
@@ -38,9 +41,10 @@
           :label="i18n.attributes.will"
           placeholder="0"
           v-model.number="formInputs.will"
-          :validation="`required|min:0|max:${maxValues.will}`"
+          :validation="`required|min:0|max:${i18n.maxValues.will}`"
           min="0"
-          :max="maxValues.will"
+          :max="i18n.maxValues.will"
+          :validation-messages="{ max: i18n.validation.will }"
         />
         <FormKit
           type="number"
@@ -48,9 +52,10 @@
           :label="i18n.attributes.power"
           placeholder="0"
           v-model.number="formInputs.power"
-          :validation="`required|min:0|max:${maxValues.power}`"
+          :validation="`required|min:0|max:${i18n.maxValues.power}`"
           min="0"
-          :max="maxValues.power"
+          :max="i18n.maxValues.power"
+          :validation-messages="{ max: i18n.validation.power }"
         />
       </div>
       <button type="button" @click="clearInputs" class="clear-button">{{ i18n.clearButton }}</button>
@@ -62,14 +67,14 @@
         <div class="result-grid">
           <div v-for="talent in group.talents" :key="talent.id" class="result-item">
             <span class="talent-name">{{ talent.name_de }}</span>
-            <span class="talent-value">{{ talent.roundedValue }}</span>
+            <span class="talent-value">{{ talent.roundedValue }} <small>({{ talent.value.toFixed(2) }})</small></span>
           </div>
         </div>
       </div>
     </div>
 
     <div v-if="apiError" class="error-box">
-      <h3>Error</h3>
+      <h3>{{ i18n.errors.errorTitle }}</h3>
       <p>{{ apiError }}</p>
     </div>
   </div>
@@ -90,6 +95,24 @@ const { i18n } = withDefaults(defineProps<{
       power: string;
     };
     clearButton: string;
+    errors: {
+      errorTitle: string;
+      fetchFailed: string;
+    };
+    maxValues: {
+      strength: number;
+      intellect: number;
+      agility: number;
+      will: number;
+      power: number;
+    };
+    validation: {
+      strength: string;
+      intellect: string;
+      agility: string;
+      will: string;
+      power: string;
+    };
   };
 }>(), {
   i18n: () => ({
@@ -100,19 +123,30 @@ const { i18n } = withDefaults(defineProps<{
       will: 'Wille',
       power: 'Kraft',
     },
-    clearButton: 'Eingaben löschen'
+    clearButton: 'Eingaben löschen',
+    errors: {
+      errorTitle: 'Fehler',
+      fetchFailed: 'Talente konnten nicht geladen werden.'
+    },
+    maxValues: {
+      strength: 435,
+      intellect: 430,
+      agility: 440,
+      will: 440,
+      power: 430,
+    },
+    validation: {
+      strength: "Darf nicht größer als 435 sein.",
+      intellect: "Darf nicht größer als 430 sein.",
+      agility: "Darf nicht größer als 440 sein.",
+      will: "Darf nicht größer als 440 sein.",
+      power: "Darf nicht größer als 430 sein."
+    }
   })
 });
 
 // --- Data ---
 const talentGroups = ref<TalentGroup[]>([]);
-const maxValues = ref({
-  strength: 435,
-  intellect: 430,
-  agility: 440,
-  will: 440,
-  power: 430,
-});
 
 // --- Form State ---
 const formInputs = ref<CalculationInputs>({
@@ -135,6 +169,7 @@ function clearInputs() {
 
 // --- Result State ---
 interface Result extends Talent {
+  value: number;
   roundedValue: number;
 }
 interface ResultGroup {
@@ -156,8 +191,7 @@ function calculateTalentValue(talent: Talent, inputs: CalculationInputs): number
     (inputs.agility * factors.agility) +
     (inputs.will * factors.will) +
     (inputs.power * factors.power);
-  const finalValue = baseTalentValue * sumOfProducts;
-  return Math.round(finalValue);
+  return baseTalentValue * sumOfProducts;
 }
 
 function recalculateResults(inputs: CalculationInputs) {
@@ -165,8 +199,9 @@ function recalculateResults(inputs: CalculationInputs) {
   for (const group of talentGroups.value) {
     const groupResults: Result[] = [];
     for (const talent of group.talents) {
-      const roundedValue = calculateTalentValue(talent, inputs);
-      groupResults.push({ ...talent, roundedValue });
+      const value = calculateTalentValue(talent, inputs);
+      const roundedValue = Math.round(Number(value.toFixed(2)));
+      groupResults.push({ ...talent, value, roundedValue });
     }
     newResults.push({ groupId: group.groupId, groupName_de: group.groupName_de, talents: groupResults });
   }
@@ -178,17 +213,14 @@ onMounted(async () => {
   try {
     const response = await fetch('/api/talents');
     if (!response.ok) {
-      throw new Error('Failed to fetch talents');
+      throw new Error('fetch failed');
     }
     const data = await response.json();
-    if (Array.isArray(data) && data.length > 0) {
-      maxValues.value = data[0].maxValues;
-      talentGroups.value = data.slice(1);
-    }
+    talentGroups.value = data.talentGroups;
     // Initial calculation
     recalculateResults(formInputs.value);
   } catch (error: any) {
-    apiError.value = error.message;
+    apiError.value = i18n.errors.fetchFailed;
   }
 });
 
@@ -200,11 +232,11 @@ watch(formInputs, (newInputs) => {
   const power = Number(newInputs.power);
 
   const isValid =
-    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= maxValues.value.strength &&
-    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= maxValues.value.intellect &&
-    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= maxValues.value.agility &&
-    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= maxValues.value.will &&
-    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= maxValues.value.power;
+    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= i18n.maxValues.strength &&
+    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= i18n.maxValues.intellect &&
+    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= i18n.maxValues.agility &&
+    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= i18n.maxValues.will &&
+    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= i18n.maxValues.power;
 
   if (isValid) {
     recalculateResults({ strength, intellect, agility, will, power });
@@ -282,6 +314,12 @@ watch(formInputs, (newInputs) => {
   font-size: 1.25rem;
   font-weight: 700;
   color: #4ade80;
+}
+
+.talent-value small {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  margin-left: 0.25rem;
 }
 
 .error-box {

@@ -9,5 +9,16 @@
     "will": "Wille",
     "power": "Kraft"
   },
-  "clearButton": "Eingaben löschen"
+  "clearButton": "Eingaben löschen",
+  "errors": {
+    "errorTitle": "Fehler",
+    "fetchFailed": "Talente konnten nicht geladen werden."
+  },
+  "validation": {
+    "strength": "Darf nicht größer als 435 sein.",
+    "intellect": "Darf nicht größer als 430 sein.",
+    "agility": "Darf nicht größer als 440 sein.",
+    "will": "Darf nicht größer als 440 sein.",
+    "power": "Darf nicht größer als 430 sein."
+  }
 }
