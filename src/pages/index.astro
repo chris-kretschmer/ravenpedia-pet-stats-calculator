@@ -2,11 +2,12 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Calculator from '@/components/Calculator.vue';
 import i18n from '@/i18n/de.json';
+import talents from '@/data/talents.json';
 ---
 
 <BaseLayout title={i18n.pageTitle}>
   <h1>{i18n.title}</h1>
   <p>{i18n.description}</p>
 
-  <Calculator :i18n={i18n} client:only="vue" />
+  <Calculator :i18n={i18n} :preloadedData={talents} client:only="vue" />
 </BaseLayout>
