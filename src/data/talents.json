@@ -1,5 +1,14 @@
 [
   {
+    "maxValues": {
+      "strength": 435,
+      "intellect": 430,
+      "agility": 440,
+      "will": 440,
+      "power": 430
+    }
+  },
+  {
     "groupId": "group-1",
     "groupName_de": "Group 1",
     "talents": [

@@ -8,9 +8,9 @@
           :label="i18n.attributes.strength"
           placeholder="0"
           v-model.number="formInputs.strength"
-          validation="required|min:0|max:435"
+          :validation="`required|min:0|max:${maxValues.strength}`"
           min="0"
-          max="435"
+          :max="maxValues.strength"
         />
         <FormKit
           type="number"
@@ -18,9 +18,9 @@
           :label="i18n.attributes.intellect"
           placeholder="0"
           v-model.number="formInputs.intellect"
-          validation="required|min:0|max:430"
+          :validation="`required|min:0|max:${maxValues.intellect}`"
           min="0"
-          max="430"
+          :max="maxValues.intellect"
         />
         <FormKit
           type="number"
@@ -28,9 +28,9 @@
           :label="i18n.attributes.agility"
           placeholder="0"
           v-model.number="formInputs.agility"
-          validation="required|min:0|max:440"
+          :validation="`required|min:0|max:${maxValues.agility}`"
           min="0"
-          max="440"
+          :max="maxValues.agility"
         />
         <FormKit
           type="number"
@@ -38,9 +38,9 @@
           :label="i18n.attributes.will"
           placeholder="0"
           v-model.number="formInputs.will"
-          validation="required|min:0|max:440"
+          :validation="`required|min:0|max:${maxValues.will}`"
           min="0"
-          max="440"
+          :max="maxValues.will"
         />
         <FormKit
           type="number"
@@ -48,9 +48,9 @@
           :label="i18n.attributes.power"
           placeholder="0"
           v-model.number="formInputs.power"
-          validation="required|min:0|max:430"
+          :validation="`required|min:0|max:${maxValues.power}`"
           min="0"
-          max="430"
+          :max="maxValues.power"
         />
       </div>
       <button type="button" @click="clearInputs" class="clear-button">{{ i18n.clearButton }}</button>
@@ -104,8 +104,15 @@ const { i18n } = withDefaults(defineProps<{
   })
 });
 
-// --- Talent Data ---
+// --- Data ---
 const talentGroups = ref<TalentGroup[]>([]);
+const maxValues = ref({
+  strength: 435,
+  intellect: 430,
+  agility: 440,
+  will: 440,
+  power: 430,
+});
 
 // --- Form State ---
 const formInputs = ref<CalculationInputs>({
@@ -173,7 +180,11 @@ onMounted(async () => {
     if (!response.ok) {
       throw new Error('Failed to fetch talents');
     }
-    talentGroups.value = await response.json();
+    const data = await response.json();
+    if (Array.isArray(data) && data.length > 0) {
+      maxValues.value = data[0].maxValues;
+      talentGroups.value = data.slice(1);
+    }
     // Initial calculation
     recalculateResults(formInputs.value);
   } catch (error: any) {
@@ -189,11 +200,11 @@ watch(formInputs, (newInputs) => {
   const power = Number(newInputs.power);
 
   const isValid =
-    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= 435 &&
-    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= 430 &&
-    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= 440 &&
-    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= 440 &&
-    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= 430;
+    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= maxValues.value.strength &&
+    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= maxValues.value.intellect &&
+    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= maxValues.value.agility &&
+    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= maxValues.value.will &&
+    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= maxValues.value.power;
 
   if (isValid) {
     recalculateResults({ strength, intellect, agility, will, power });
