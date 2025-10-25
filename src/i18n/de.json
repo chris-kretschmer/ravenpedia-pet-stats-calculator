@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Talent-Rechner",
+  "title": "Talent-Rechner",
+  "description": "description muss hier rein",
+  "attributes": {
+    "strength": "Stärke",
+    "intellect": "Intelligenz",
+    "agility": "Geschick",
+    "will": "Wille",
+    "power": "Kraft"
+  },
+  "clearButton": "Eingaben löschen"
+}

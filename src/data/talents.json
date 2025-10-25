@@ -1,0 +1,518 @@
+[
+  {
+    "groupId": "group-1",
+    "groupName_de": "Group 1",
+    "talents": [
+      {
+        "id": "schadens-gabe",
+        "name_de": "Schadens-Gabe",
+        "baseTalentValue": 0.008,
+        "factors": {
+          "strength": 2,
+          "intellect": 0,
+          "agility": 0,
+          "will": 2,
+          "power": 1
+        }
+      },
+      {
+        "id": "schadens-geber",
+        "name_de": "Schadens-Geber",
+        "baseTalentValue": 0.005,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "schadens-gunst-u-bringer",
+        "name_de": "Schadens-Gunst u. -bringer",
+        "baseTalentValue": 0.003,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-2",
+    "groupName_de": "Group 2",
+    "talents": [
+      {
+        "id": "resistenz-trotz",
+        "name_de": "Resistenz-Trotz",
+        "baseTalentValue": 0.012,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "resistenz-fest",
+        "name_de": "Resistenz-Fest",
+        "baseTalentValue": 0.008,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "resistenz-frei",
+        "name_de": "Resistenz-Frei",
+        "baseTalentValue": 0.004,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-3",
+    "groupName_de": "Group 3",
+    "talents": [
+      {
+        "id": "zielen-schutze",
+        "name_de": "Zielen-Schütze",
+        "baseTalentValue": 0.008,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "zielen-schuss",
+        "name_de": "Zielen-Schuss",
+        "baseTalentValue": 0.005,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "zielen-auge",
+        "name_de": "Zielen-Auge",
+        "baseTalentValue": 0.003,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-4",
+    "groupName_de": "Group 4",
+    "talents": [
+      {
+        "id": "oberkritiker",
+        "name_de": "Oberkritiker",
+        "baseTalentValue": 0.025,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "kritisch-schlager-1",
+        "name_de": "Kritisch-Schläger",
+        "baseTalentValue": 0.02,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "kritisch-schlager-2",
+        "name_de": "Kritisch-Schläger",
+        "baseTalentValue": 0.024,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "kritiker",
+        "name_de": "Kritiker",
+        "baseTalentValue": 0.018,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-5",
+    "groupName_de": "Group 5",
+    "talents": [
+      {
+        "id": "verteidiger",
+        "name_de": "Verteidiger",
+        "baseTalentValue": 0.024,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "blocker",
+        "name_de": "Blocker",
+        "baseTalentValue": 0.018,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-6",
+    "groupName_de": "Group 6",
+    "talents": [
+      {
+        "id": "rustungsbrecher",
+        "name_de": "Rüstungsbrecher",
+        "baseTalentValue": 0.003,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "rustungspiekser",
+        "name_de": "Rüstungspiekser",
+        "baseTalentValue": 0.0015,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-7",
+    "groupName_de": "Group 7",
+    "talents": [
+      {
+        "id": "mediziener",
+        "name_de": "Mediziener",
+        "baseTalentValue": 0.0065,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "heiler",
+        "name_de": "Heiler",
+        "baseTalentValue": 0.003,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-8",
+    "groupName_de": "Group 8",
+    "talents": [
+      {
+        "id": "lebendig",
+        "name_de": "Lebendig",
+        "baseTalentValue": 0.0065,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "gesund",
+        "name_de": "Gesund",
+        "baseTalentValue": 0.003,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-9",
+    "groupName_de": "Group 9",
+    "talents": [
+      {
+        "id": "uberfluss",
+        "name_de": "Überfluss",
+        "baseTalentValue": 0.12,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "lebens-geschenk",
+        "name_de": "Lebens-Geschenk",
+        "baseTalentValue": 0.1,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "mehr-vom-leben",
+        "name_de": "Mehr vom Leben",
+        "baseTalentValue": 0.08,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "lebens-plus",
+        "name_de": "Lebens Plus",
+        "baseTalentValue": 0.06,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-10",
+    "groupName_de": "Group 10",
+    "talents": [
+      {
+        "id": "mana-fulle",
+        "name_de": "Mana-Fülle",
+        "baseTalentValue": 0.1,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "mana-geschenk",
+        "name_de": "Mana-Geschenk",
+        "baseTalentValue": 0.08,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "mana-extra",
+        "name_de": "Mana-Extra",
+        "baseTalentValue": 0.06,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "mana-plus",
+        "name_de": "Mana-Plus",
+        "baseTalentValue": 0.04,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-11",
+    "groupName_de": "Group 11",
+    "talents": [
+      {
+        "id": "pip-plus",
+        "name_de": "Pip-Plus",
+        "baseTalentValue": 0.004,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-12",
+    "groupName_de": "Group 12",
+    "talents": [
+      {
+        "id": "pip-sparer",
+        "name_de": "Pip-Sparer",
+        "baseTalentValue": 0.024,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "pip-bewahrer",
+        "name_de": "Pip-Bewahrer",
+        "baseTalentValue": 0.018,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-13",
+    "groupName_de": "Group 13",
+    "talents": [
+      {
+        "id": "schwer-zu-betauben",
+        "name_de": "Schwer zu betäuben",
+        "baseTalentValue": 0.008,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "kaum-zu-betauben",
+        "name_de": "Kaum zu Betäuben",
+        "baseTalentValue": 0.004,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  },
+  {
+    "groupId": "group-14",
+    "groupName_de": "Group 14",
+    "talents": [
+      {
+        "id": "angelgluck-episch",
+        "name_de": "Angelglück-Episch",
+        "baseTalentValue": 0.0025,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      },
+      {
+        "id": "angelgluck",
+        "name_de": "Angelglück",
+        "baseTalentValue": 0.0025,
+        "factors": {
+          "strength": 0,
+          "intellect": 0,
+          "agility": 0,
+          "will": 0,
+          "power": 0
+        }
+      }
+    ]
+  }
+]
