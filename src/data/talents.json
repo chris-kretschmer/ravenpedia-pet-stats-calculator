@@ -28,11 +28,11 @@
           "name_de": "Schadens-Geber",
           "baseTalentValue": 0.005,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -40,11 +40,11 @@
           "name_de": "Schadens-Gunst u. -bringer",
           "baseTalentValue": 0.0025,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -58,11 +58,11 @@
           "name_de": "Resistenz-Trotz",
           "baseTalentValue": 0.012,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
-            "agility": 0,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -70,11 +70,11 @@
           "name_de": "Resistenz-Fest",
           "baseTalentValue": 0.008,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
-            "agility": 0,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -82,11 +82,11 @@
           "name_de": "Resistenz-Frei",
           "baseTalentValue": 0.004,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
-            "agility": 0,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
@@ -101,10 +101,10 @@
           "baseTalentValue": 0.0075,
           "factors": {
             "strength": 0,
-            "intellect": 0,
-            "agility": 0,
+            "intellect": 2,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -113,10 +113,10 @@
           "baseTalentValue": 0.005,
           "factors": {
             "strength": 0,
-            "intellect": 0,
-            "agility": 0,
+            "intellect": 2,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -125,10 +125,10 @@
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
-            "intellect": 0,
-            "agility": 0,
+            "intellect": 2,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
