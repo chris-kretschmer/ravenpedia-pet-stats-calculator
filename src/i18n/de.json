@@ -15,10 +15,6 @@
     "fetchFailed": "Talente konnten nicht geladen werden."
   },
   "validation": {
-    "strength": "Darf nicht größer als 435 sein.",
-    "intellect": "Darf nicht größer als 430 sein.",
-    "agility": "Darf nicht größer als 440 sein.",
-    "will": "Darf nicht größer als 440 sein.",
-    "power": "Darf nicht größer als 430 sein."
+    "max": "Darf nicht größer als {max} sein."
   }
 }

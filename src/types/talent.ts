@@ -14,11 +14,11 @@ export interface Talent {
 }
 
 export interface CalculationInputs {
-  strength: number;
-  intellect: number;
-  agility: number;
-  will: number;
-  power: number;
+  strength: number | string;
+  intellect: number | string;
+  agility: number | string;
+  will: number | string;
+  power: number | string;
 }
 
 export interface TalentGroup {

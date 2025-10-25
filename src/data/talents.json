@@ -14,7 +14,7 @@
         {
           "id": "schadens-gabe",
           "name_de": "Schadens-Gabe",
-          "baseTalentValue": 0.008,
+          "baseTalentValue": 0.0075,
           "factors": {
             "strength": 2,
             "intellect": 0,
@@ -38,7 +38,7 @@
         {
           "id": "schadens-gunst-u-bringer",
           "name_de": "Schadens-Gunst u. -bringer",
-          "baseTalentValue": 0.003,
+          "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
             "intellect": 0,
@@ -98,7 +98,7 @@
         {
           "id": "zielen-schutze",
           "name_de": "Zielen-Schütze",
-          "baseTalentValue": 0.008,
+          "baseTalentValue": 0.0075,
           "factors": {
             "strength": 0,
             "intellect": 0,
@@ -122,7 +122,7 @@
         {
           "id": "zielen-auge",
           "name_de": "Zielen-Auge",
-          "baseTalentValue": 0.003,
+          "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
             "intellect": 0,
@@ -224,7 +224,7 @@
         {
           "id": "rustungsbrecher",
           "name_de": "Rüstungsbrecher",
-          "baseTalentValue": 0.003,
+          "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
             "intellect": 0,

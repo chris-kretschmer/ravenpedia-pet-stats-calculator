@@ -7,55 +7,55 @@
           name="strength"
           :label="i18n.attributes.strength"
           placeholder="0"
-          v-model.number="formInputs.strength"
-          :validation="`required|min:0|max:${i18n.maxValues.strength}`"
+          v-model="formInputs.strength"
+          :validation="`required|min:0|max:${maxValues.strength}`"
           min="0"
-          :max="i18n.maxValues.strength"
-          :validation-messages="{ max: i18n.validation.strength }"
+          :max="maxValues.strength"
+          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.strength)) }"
         />
         <FormKit
           type="number"
           name="intellect"
           :label="i18n.attributes.intellect"
           placeholder="0"
-          v-model.number="formInputs.intellect"
-          :validation="`required|min:0|max:${i18n.maxValues.intellect}`"
+          v-model="formInputs.intellect"
+          :validation="`required|min:0|max:${maxValues.intellect}`"
           min="0"
-          :max="i18n.maxValues.intellect"
-          :validation-messages="{ max: i18n.validation.intellect }"
+          :max="maxValues.intellect"
+          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.intellect)) }"
         />
         <FormKit
           type="number"
           name="agility"
           :label="i18n.attributes.agility"
           placeholder="0"
-          v-model.number="formInputs.agility"
-          :validation="`required|min:0|max:${i18n.maxValues.agility}`"
+          v-model="formInputs.agility"
+          :validation="`required|min:0|max:${maxValues.agility}`"
           min="0"
-          :max="i18n.maxValues.agility"
-          :validation-messages="{ max: i18n.validation.agility }"
+          :max="maxValues.agility"
+          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.agility)) }"
         />
         <FormKit
           type="number"
           name="will"
           :label="i18n.attributes.will"
           placeholder="0"
-          v-model.number="formInputs.will"
-          :validation="`required|min:0|max:${i18n.maxValues.will}`"
+          v-model="formInputs.will"
+          :validation="`required|min:0|max:${maxValues.will}`"
           min="0"
-          :max="i18n.maxValues.will"
-          :validation-messages="{ max: i18n.validation.will }"
+          :max="maxValues.will"
+          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.will)) }"
         />
         <FormKit
           type="number"
           name="power"
           :label="i18n.attributes.power"
           placeholder="0"
-          v-model.number="formInputs.power"
-          :validation="`required|min:0|max:${i18n.maxValues.power}`"
+          v-model="formInputs.power"
+          :validation="`required|min:0|max:${maxValues.power}`"
           min="0"
-          :max="i18n.maxValues.power"
-          :validation-messages="{ max: i18n.validation.power }"
+          :max="maxValues.power"
+          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.power)) }"
         />
       </div>
       <button type="button" @click="clearInputs" class="clear-button">{{ i18n.clearButton }}</button>
@@ -81,72 +81,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, withDefaults } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import type { Talent, CalculationInputs, TalentGroup } from '@/types/talent';
+import de from '../i18n/de.json';
 
-// --- Props ---
-const { i18n } = withDefaults(defineProps<{
-  i18n?: {
-    attributes: {
-      strength: string;
-      intellect: string;
-      agility: string;
-      will: string;
-      power: string;
-    };
-    clearButton: string;
-    errors: {
-      errorTitle: string;
-      fetchFailed: string;
-    };
-    maxValues: {
-      strength: number;
-      intellect: number;
-      agility: number;
-      will: number;
-      power: number;
-    };
-    validation: {
-      strength: string;
-      intellect: string;
-      agility: string;
-      will: string;
-      power: string;
-    };
-  };
-}>(), {
-  i18n: () => ({
-    attributes: {
-      strength: 'Stärke',
-      intellect: 'Intelligenz',
-      agility: 'Geschick',
-      will: 'Wille',
-      power: 'Kraft',
-    },
-    clearButton: 'Eingaben löschen',
-    errors: {
-      errorTitle: 'Fehler',
-      fetchFailed: 'Talente konnten nicht geladen werden.'
-    },
-    maxValues: {
-      strength: 435,
-      intellect: 430,
-      agility: 440,
-      will: 440,
-      power: 430,
-    },
-    validation: {
-      strength: "Darf nicht größer als 435 sein.",
-      intellect: "Darf nicht größer als 430 sein.",
-      agility: "Darf nicht größer als 440 sein.",
-      will: "Darf nicht größer als 440 sein.",
-      power: "Darf nicht größer als 430 sein."
-    }
-  })
-});
+// Provide the centralized i18n object (single source of truth)
+const i18n = de as any;
 
 // --- Data ---
 const talentGroups = ref<TalentGroup[]>([]);
+
+// --- maxValues (loaded from API) ---
+const maxValues = ref({
+  strength: 435,
+  intellect: 430,
+  agility: 440,
+  will: 440,
+  power: 430,
+});
 
 // --- Form State ---
 const formInputs = ref<CalculationInputs>({
@@ -182,8 +134,19 @@ const results = ref<ResultGroup[]>([]);
 // --- API State ---
 const apiError = ref<string | null>(null);
 
+// Helper: coerce inputs to numbers
+function toNumbers(inputs: CalculationInputs) {
+  return {
+    strength: Number(inputs.strength || 0),
+    intellect: Number(inputs.intellect || 0),
+    agility: Number(inputs.agility || 0),
+    will: Number(inputs.will || 0),
+    power: Number(inputs.power || 0),
+  };
+}
+
 // --- Calculation Logic ---
-function calculateTalentValue(talent: Talent, inputs: CalculationInputs): number {
+function calculateTalentValue(talent: Talent, inputs: { strength: number; intellect: number; agility: number; will: number; power: number }): number {
   const { baseTalentValue, factors } = talent;
   const sumOfProducts =
     (inputs.strength * factors.strength) +
@@ -194,7 +157,7 @@ function calculateTalentValue(talent: Talent, inputs: CalculationInputs): number
   return baseTalentValue * sumOfProducts;
 }
 
-function recalculateResults(inputs: CalculationInputs) {
+function recalculateResults(inputs: { strength: number; intellect: number; agility: number; will: number; power: number }) {
   const newResults: ResultGroup[] = [];
   for (const group of talentGroups.value) {
     const groupResults: Result[] = [];
@@ -216,30 +179,37 @@ onMounted(async () => {
       throw new Error('fetch failed');
     }
     const data = await response.json();
-    talentGroups.value = data.talentGroups;
-    // Initial calculation
-    recalculateResults(formInputs.value);
+    // load talent groups
+    talentGroups.value = data.talentGroups || [];
+    // load maxValues from API if present
+    if (data.maxValues) {
+      maxValues.value = {
+        strength: Number(data.maxValues.strength ?? maxValues.value.strength),
+        intellect: Number(data.maxValues.intellect ?? maxValues.value.intellect),
+        agility: Number(data.maxValues.agility ?? maxValues.value.agility),
+        will: Number(data.maxValues.will ?? maxValues.value.will),
+        power: Number(data.maxValues.power ?? maxValues.value.power),
+      };
+    }
+    // Initial calculation using coerced numbers
+    recalculateResults(toNumbers(formInputs.value));
   } catch (error: any) {
     apiError.value = i18n.errors.fetchFailed;
   }
 });
 
 watch(formInputs, (newInputs) => {
-  const strength = Number(newInputs.strength);
-  const intellect = Number(newInputs.intellect);
-  const agility = Number(newInputs.agility);
-  const will = Number(newInputs.will);
-  const power = Number(newInputs.power);
+  const nums = toNumbers(newInputs);
 
   const isValid =
-    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= i18n.maxValues.strength &&
-    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= i18n.maxValues.intellect &&
-    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= i18n.maxValues.agility &&
-    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= i18n.maxValues.will &&
-    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= i18n.maxValues.power;
+    !isNaN(nums.strength) && nums.strength >= 0 && nums.strength <= maxValues.value.strength &&
+    !isNaN(nums.intellect) && nums.intellect >= 0 && nums.intellect <= maxValues.value.intellect &&
+    !isNaN(nums.agility) && nums.agility >= 0 && nums.agility <= maxValues.value.agility &&
+    !isNaN(nums.will) && nums.will >= 0 && nums.will <= maxValues.value.will &&
+    !isNaN(nums.power) && nums.power >= 0 && nums.power <= maxValues.value.power;
 
   if (isValid) {
-    recalculateResults({ strength, intellect, agility, will, power });
+    recalculateResults(nums);
   }
 }, { deep: true });
 </script>
