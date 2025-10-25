@@ -85,13 +85,22 @@ import { ref, onMounted, watch } from 'vue';
 import type { Talent, CalculationInputs, TalentGroup } from '@/types/talent';
 import de from '../i18n/de.json';
 
-// Provide the centralized i18n object (single source of truth)
-const i18n = de as any;
+// Accept optional props: i18n (override) and preloadedData (server-injected talents)
+const props = defineProps<{
+  i18n?: any;
+  preloadedData?: {
+    maxValues?: Record<string, number>;
+    talentGroups?: TalentGroup[];
+  } | null;
+}>();
+
+// Provide the centralized i18n object (single source of truth). Prefer passed prop if provided.
+const i18n = (props.i18n ?? de) as any;
 
 // --- Data ---
 const talentGroups = ref<TalentGroup[]>([]);
 
-// --- maxValues (loaded from API) ---
+// --- maxValues (loaded from API or preloadedData) ---
 const maxValues = ref({
   strength: 435,
   intellect: 430,
@@ -102,20 +111,20 @@ const maxValues = ref({
 
 // --- Form State ---
 const formInputs = ref<CalculationInputs>({
-  strength: 0,
-  intellect: 0,
-  agility: 0,
-  will: 0,
-  power: 0,
+  strength: '',
+  intellect: '',
+  agility: '',
+  will: '',
+  power: '',
 });
 
 function clearInputs() {
   formInputs.value = {
-    strength: 0,
-    intellect: 0,
-    agility: 0,
-    will: 0,
-    power: 0,
+    strength: '',
+    intellect: '',
+    agility: '',
+    will: '',
+    power: '',
   };
 }
 
@@ -174,6 +183,24 @@ function recalculateResults(inputs: { strength: number; intellect: number; agili
 // --- Lifecycle & Watcher ---
 onMounted(async () => {
   try {
+    // If server provided preloaded data, use it to avoid a client fetch
+    if (props.preloadedData) {
+      const data = props.preloadedData;
+      talentGroups.value = data.talentGroups || [];
+      if (data.maxValues) {
+        maxValues.value = {
+          strength: Number(data.maxValues.strength ?? maxValues.value.strength),
+          intellect: Number(data.maxValues.intellect ?? maxValues.value.intellect),
+          agility: Number(data.maxValues.agility ?? maxValues.value.agility),
+          will: Number(data.maxValues.will ?? maxValues.value.will),
+          power: Number(data.maxValues.power ?? maxValues.value.power),
+        };
+      }
+      recalculateResults(toNumbers(formInputs.value));
+      return;
+    }
+
+    // Fallback: fetch from API (existing behavior)
     const response = await fetch('/api/talents');
     if (!response.ok) {
       throw new Error('fetch failed');
