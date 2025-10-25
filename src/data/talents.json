@@ -219,7 +219,7 @@
     },
     {
       "groupId": "group-6",
-      "groupName_de": "Durchdringungstalente",
+      "groupName_de": "Durchschlagstalente",
       "talents": [
         {
           "id": "rustungsbrecher",
@@ -249,7 +249,7 @@
     },
     {
       "groupId": "group-7",
-      "groupName_de": "Group 7",
+      "groupName_de": "Eingehende Heilungstalente",
       "talents": [
         {
           "id": "mediziener",
@@ -279,7 +279,7 @@
     },
     {
       "groupId": "group-8",
-      "groupName_de": "",
+      "groupName_de": "Abgehende Heilungstalente",
       "talents": [
         {
           "id": "lebendig",
@@ -417,7 +417,7 @@
     },
     {
       "groupId": "group-11",
-      "groupName_de": "Group 11",
+      "groupName_de": "Super-Piperhöhungstalente",
       "talents": [
         {
           "id": "pip-plus",
@@ -435,7 +435,7 @@
     },
     {
       "groupId": "group-12",
-      "groupName_de": "Group 12",
+      "groupName_de": "Pip-Umwandlungstalente",
       "talents": [
         {
           "id": "pip-sparer",
@@ -465,7 +465,7 @@
     },
     {
       "groupId": "group-13",
-      "groupName_de": "Betäubungswiderstandstalente",
+      "groupName_de": "Betäubungsresistenztalente",
       "talents": [
         {
           "id": "schwer-zu-betauben",
@@ -495,7 +495,7 @@
     },
     {
       "groupId": "group-14",
-      "groupName_de": Angelglücktalente",
+      "groupName_de": "Angelglückstalente",
       "talents": [
         {
           "id": "angelgluck-episch",
