@@ -9,7 +9,7 @@
   "talentGroups": [
     {
       "groupId": "group-1",
-      "groupName_de": "Group 1",
+      "groupName_de": "Schadenstalente",
       "talents": [
         {
           "id": "schadens-gabe",
@@ -51,7 +51,7 @@
     },
     {
       "groupId": "group-2",
-      "groupName_de": "Group 2",
+      "groupName_de": "Resistenztalente",
       "talents": [
         {
           "id": "resistenz-trotz",
@@ -93,7 +93,7 @@
     },
     {
       "groupId": "group-3",
-      "groupName_de": "Group 3",
+      "groupName_de": "Zieltalente",
       "talents": [
         {
           "id": "zielen-schutze",
@@ -135,7 +135,7 @@
     },
     {
       "groupId": "group-4",
-      "groupName_de": "Group 4",
+      "groupName_de": "Kritische Talente",
       "talents": [
         {
           "id": "oberkritiker",
@@ -151,7 +151,7 @@
         },
         {
           "id": "kritisch-schlager-1",
-          "name_de": "Kritisch-Schläger",
+          "name_de": "(Schulspezifisch)Kritisch-Schläger",
           "baseTalentValue": 0.02,
           "factors": {
             "strength": 0,
@@ -189,7 +189,7 @@
     },
     {
       "groupId": "group-5",
-      "groupName_de": "Group 5",
+      "groupName_de": "Blocktalente",
       "talents": [
         {
           "id": "verteidiger",
@@ -219,7 +219,7 @@
     },
     {
       "groupId": "group-6",
-      "groupName_de": "Group 6",
+      "groupName_de": "Durchdringungstalente",
       "talents": [
         {
           "id": "rustungsbrecher",
@@ -279,7 +279,7 @@
     },
     {
       "groupId": "group-8",
-      "groupName_de": "Group 8",
+      "groupName_de": "",
       "talents": [
         {
           "id": "lebendig",
@@ -309,7 +309,7 @@
     },
     {
       "groupId": "group-9",
-      "groupName_de": "Group 9",
+      "groupName_de": "Lebenserhöhungstalente",
       "talents": [
         {
           "id": "uberfluss",
@@ -363,7 +363,7 @@
     },
     {
       "groupId": "group-10",
-      "groupName_de": "Group 10",
+      "groupName_de": "Manaerhöhungstalente",
       "talents": [
         {
           "id": "mana-fulle",
@@ -465,7 +465,7 @@
     },
     {
       "groupId": "group-13",
-      "groupName_de": "Group 13",
+      "groupName_de": "Betäubungswiderstandstalente",
       "talents": [
         {
           "id": "schwer-zu-betauben",
@@ -495,7 +495,7 @@
     },
     {
       "groupId": "group-14",
-      "groupName_de": "Group 14",
+      "groupName_de": Angelglücktalente",
       "talents": [
         {
           "id": "angelgluck-episch",
