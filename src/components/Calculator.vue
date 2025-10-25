@@ -182,7 +182,22 @@ onMounted(async () => {
 });
 
 watch(formInputs, (newInputs) => {
-  recalculateResults(newInputs);
+  const strength = Number(newInputs.strength);
+  const intellect = Number(newInputs.intellect);
+  const agility = Number(newInputs.agility);
+  const will = Number(newInputs.will);
+  const power = Number(newInputs.power);
+
+  const isValid =
+    newInputs.strength !== null && newInputs.strength !== '' && !isNaN(strength) && strength >= 0 && strength <= 435 &&
+    newInputs.intellect !== null && newInputs.intellect !== '' && !isNaN(intellect) && intellect >= 0 && intellect <= 430 &&
+    newInputs.agility !== null && newInputs.agility !== '' && !isNaN(agility) && agility >= 0 && agility <= 440 &&
+    newInputs.will !== null && newInputs.will !== '' && !isNaN(will) && will >= 0 && will <= 440 &&
+    newInputs.power !== null && newInputs.power !== '' && !isNaN(power) && power >= 0 && power <= 430;
+
+  if (isValid) {
+    recalculateResults({ strength, intellect, agility, will, power });
+  }
 }, { deep: true });
 </script>
 

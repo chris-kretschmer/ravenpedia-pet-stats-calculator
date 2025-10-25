@@ -8,5 +8,5 @@ import i18n from '@/i18n/de.json';
   <h1>{i18n.title}</h1>
   <p>{i18n.description}</p>
 
-  <Calculator :i18n={i18n} client:load />
+  <Calculator :i18n={i18n} client:only="vue" />
 </BaseLayout>
