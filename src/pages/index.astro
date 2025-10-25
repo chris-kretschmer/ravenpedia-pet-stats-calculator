@@ -5,9 +5,9 @@ import i18n from '@/i18n/de.json';
 import talents from '@/data/talents.json';
 ---
 
-<BaseLayout title={i18n.pageTitle}>
+<BaseLayout title={i18n.pageTitle} i18n={i18n}>
   <h1>{i18n.title}</h1>
-  <p>{i18n.description}</p>
+  <h2>{i18n.subTitle}</h2>
 
   <Calculator :i18n={i18n} :preloadedData={talents} client:only="vue" />
 </BaseLayout>

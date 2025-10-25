@@ -1,7 +1,8 @@
 {
-  "pageTitle": "Talent-Rechner",
-  "title": "Talent-Rechner",
-  "description": "description muss hier rein",
+  "pageTitle": "Haustier Talent Rechner für Wizard101 | Ravenpedia",
+  "description": "Berechne die genauen Werte der Talente deines Wizard101-Haustiers basierend auf seinen Grundwerten. Schnell, einfach und präzise.",
+  "title": "Haustier Talent Rechner für Wizard101",
+  "subTitle": "Trage die Grundwerte deiner Haustiere ein, um die Talentwerte zu berechnen.",
   "attributes": {
     "strength": "Stärke",
     "intellect": "Intelligenz",
@@ -16,5 +17,11 @@
   },
   "validation": {
     "max": "Darf nicht größer als {max} sein."
+  },
+  "footer": {
+    "credit": "Ein Onlinerechner von ravenpedia.xyz",
+    "creditUrl": "https://ravenpedia.xyz/",
+    "impressum": "Impressum",
+    "impressumUrl": "https://ravenpedia.xyz/Impressum"
   }
 }

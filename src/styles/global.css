@@ -27,7 +27,45 @@ h1 {
   font-weight: 700;
 }
 
+h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
 /* Set number input text color to white */
 .formkit-input[type="number"] {
   color: white;
+}
+
+/* Footer styles */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-footer .footer-credit,
+.site-footer .footer-impressum {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #cfcfcf;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .site-footer {
+    align-items: center;
+  }
 }

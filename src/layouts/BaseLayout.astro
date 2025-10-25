@@ -4,9 +4,11 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  // optional i18n object passed from pages to show footer text
+  i18n?: any;
 }
 
-const { title } = Astro.props;
+const { title, i18n } = Astro.props;
 ---
 
 <html lang="en">
@@ -15,11 +17,30 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={i18n?.description ?? ''} />
     <title>{title}</title>
   </head>
   <body>
     <main class="container">
       <slot />
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-links">
+          {i18n?.footer?.creditUrl ? (
+            <a class="footer-credit" href={i18n.footer.creditUrl} target="_blank" rel="noopener noreferrer">{i18n.footer.credit}</a>
+          ) : i18n?.footer?.credit ? (
+            <span class="footer-credit">{i18n.footer.credit}</span>
+          ) : null}
+
+          {i18n?.footer?.impressumUrl ? (
+            <a class="footer-impressum" href={i18n.footer.impressumUrl} target="_blank" rel="noopener noreferrer">{i18n.footer.impressum}</a>
+          ) : i18n?.footer?.impressum ? (
+            <span class="footer-impressum">{i18n.footer.impressum}</span>
+          ) : null}
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
