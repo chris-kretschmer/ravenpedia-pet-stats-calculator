@@ -200,12 +200,32 @@ onMounted(async () => {
       return;
     }
 
-    // Fallback: fetch from API (existing behavior)
+    // Fallback: fetch from API (existing behavior) but support base64-encoded responses
     const response = await fetch('/api/talents');
     if (!response.ok) {
       throw new Error('fetch failed');
     }
-    const data = await response.json();
+
+    // If the server encoded the payload (e.g. base64), it will set X-Content-Encoded header
+    const encodedHeader = response.headers.get('X-Content-Encoded');
+    let data: any;
+
+    if (encodedHeader === 'base64') {
+      const encodedText = await response.text();
+      try {
+        // decode base64 in browser (atob) or fallback to Buffer for environments without atob
+        const jsonStr = (typeof atob === 'function')
+          ? atob(encodedText)
+          : Buffer.from(encodedText, 'base64').toString('utf8');
+        data = JSON.parse(jsonStr);
+      } catch (e) {
+        throw new Error('failed to decode base64 response');
+      }
+    } else {
+      // plain JSON response
+      data = await response.json();
+    }
+
     // load talent groups
     talentGroups.value = data.talentGroups || [];
     // load maxValues from API if present
