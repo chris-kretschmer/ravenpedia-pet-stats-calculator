@@ -144,9 +144,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -156,9 +156,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -168,9 +168,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -180,9 +180,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -197,10 +197,10 @@
           "baseTalentValue": 0.024,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -209,10 +209,10 @@
           "baseTalentValue": 0.018,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -226,11 +226,11 @@
           "name_de": "Rüstungsbrecher",
           "baseTalentValue": 0.0025,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
-            "agility": 0,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -238,11 +238,11 @@
           "name_de": "Rüstungspiekser",
           "baseTalentValue": 0.0015,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
-            "agility": 0,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
@@ -256,11 +256,11 @@
           "name_de": "Mediziener",
           "baseTalentValue": 0.0065,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -268,11 +268,11 @@
           "name_de": "Heiler",
           "baseTalentValue": 0.003,
           "factors": {
-            "strength": 0,
+            "strength": 2,
             "intellect": 0,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -287,10 +287,10 @@
           "baseTalentValue": 0.0065,
           "factors": {
             "strength": 0,
-            "intellect": 0,
-            "agility": 0,
+            "intellect": 2,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -299,10 +299,10 @@
           "baseTalentValue": 0.003,
           "factors": {
             "strength": 0,
-            "intellect": 0,
-            "agility": 0,
+            "intellect": 2,
+            "agility": 2,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
@@ -318,9 +318,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -330,9 +330,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -342,9 +342,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -354,9 +354,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -371,10 +371,10 @@
           "baseTalentValue": 0.1,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -383,10 +383,10 @@
           "baseTalentValue": 0.08,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -395,10 +395,10 @@
           "baseTalentValue": 0.06,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -407,10 +407,10 @@
           "baseTalentValue": 0.04,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -424,11 +424,11 @@
           "name_de": "Pip-Plus",
           "baseTalentValue": 0.004,
           "factors": {
-            "strength": 0,
-            "intellect": 0,
+            "strength": 2,
+            "intellect": 2,
             "agility": 0,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
@@ -444,9 +444,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -456,9 +456,9 @@
           "factors": {
             "strength": 0,
             "intellect": 0,
-            "agility": 0,
-            "will": 0,
-            "power": 0
+            "agility": 2,
+            "will": 2,
+            "power": 1
           }
         }
       ]
@@ -472,11 +472,11 @@
           "name_de": "Schwer zu betäuben",
           "baseTalentValue": 0.008,
           "factors": {
-            "strength": 0,
-            "intellect": 0,
+            "strength": 2,
+            "intellect": 2,
             "agility": 0,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         },
         {
@@ -484,11 +484,11 @@
           "name_de": "Kaum zu Betäuben",
           "baseTalentValue": 0.004,
           "factors": {
-            "strength": 0,
-            "intellect": 0,
+            "strength": 2,
+            "intellect": 2,
             "agility": 0,
             "will": 0,
-            "power": 0
+            "power": 1
           }
         }
       ]
@@ -503,10 +503,10 @@
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         },
         {
@@ -515,10 +515,10 @@
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
-            "intellect": 0,
+            "intellect": 2,
             "agility": 0,
-            "will": 0,
-            "power": 0
+            "will": 2,
+            "power": 1
           }
         }
       ]

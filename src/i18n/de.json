@@ -8,7 +8,7 @@
     "intellect": "Intelligenz",
     "agility": "Geschick",
     "will": "Wille",
-    "power": "Kraft"
+    "power": "Power"
   },
   "clearButton": "Eingaben löschen",
   "errors": {
@@ -19,7 +19,7 @@
     "max": "Darf nicht größer als {max} sein."
   },
   "footer": {
-    "credit": "Hier gehts zum Wizard101-Community-Wiki 'ravenpedia.xyz'",
+    "credit": "Wizard101-Community-Wiki 'ravenpedia.xyz'",
     "creditUrl": "https://ravenpedia.xyz/",
     "impressum": "Impressum",
     "impressumUrl": "https://ravenpedia.xyz/Impressum",

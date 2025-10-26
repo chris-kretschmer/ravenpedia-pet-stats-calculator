@@ -2,6 +2,9 @@ Ravenpedia — Pet Talent Stats Calculator
 ===============================================
 A compact web calculator for pet talents in Wizard101 using Astro, Vue and FormKit.
 
+<a href="https://github.com/chris-kretschmer/ravenpedia-pet-stats-calculator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=chris-kretschmer/ravenpedia-pet-stats-calculator" />
+</a>
 
 Key features
 --------------
@@ -26,3 +29,4 @@ Running locally
 Notes
 -----
 - API responses are base64-encoded by default and include an `X-Content-Encoded: base64` header so clients can detect and decode them.
+
