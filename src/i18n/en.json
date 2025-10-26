@@ -16,6 +16,8 @@
     "fetchFailed": "Could not load talents."
   },
   "validation": {
+    "required": "{field} is required.",
+    "min": "Must not be less than {min}.",
     "max": "Must not be greater than {max}."
   },
   "footer": {

@@ -11,7 +11,7 @@
           :validation="`required|min:0|max:${maxValues.strength}`"
           min="0"
           :max="maxValues.strength"
-          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.strength)) }"
+          :validation-messages="validationMessages('strength', maxValues.strength)"
         />
         <FormKit
           type="number"
@@ -22,7 +22,7 @@
           :validation="`required|min:0|max:${maxValues.intellect}`"
           min="0"
           :max="maxValues.intellect"
-          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.intellect)) }"
+          :validation-messages="validationMessages('intellect', maxValues.intellect)"
         />
         <FormKit
           type="number"
@@ -33,7 +33,7 @@
           :validation="`required|min:0|max:${maxValues.agility}`"
           min="0"
           :max="maxValues.agility"
-          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.agility)) }"
+          :validation-messages="validationMessages('agility', maxValues.agility)"
         />
         <FormKit
           type="number"
@@ -44,7 +44,7 @@
           :validation="`required|min:0|max:${maxValues.will}`"
           min="0"
           :max="maxValues.will"
-          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.will)) }"
+          :validation-messages="validationMessages('will', maxValues.will)"
         />
         <FormKit
           type="number"
@@ -55,7 +55,7 @@
           :validation="`required|min:0|max:${maxValues.power}`"
           min="0"
           :max="maxValues.power"
-          :validation-messages="{ max: i18n.validation.max.replace('{max}', String(maxValues.power)) }"
+          :validation-messages="validationMessages('power', maxValues.power)"
         />
       </div>
       <button type="button" @click="clearInputs" class="clear-button">{{ i18n.clearButton }}</button>
@@ -82,7 +82,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
-import type { Talent, CalculationInputs, TalentGroup } from '@/types/talent';
+import type { Talent, CalculationInputs } from '@/types/talent';
 import de from '../i18n/de.json';
 import en from '../i18n/en.json';
 
@@ -106,7 +106,8 @@ else if (typeof window !== 'undefined') {
 }
 
 // Use provided i18n prop if available; otherwise pick en/de JSON based on resolvedLang
-const i18n = (props.i18n ?? (resolvedLang === 'en' ? en : de)) as any;
+const baseLocale = resolvedLang === 'en' ? en : de;
+const i18n = ({ ...baseLocale, ...(props.i18n ?? {}) }) as any;
 const lang = resolvedLang;
 
 // --- Data ---
@@ -165,6 +166,19 @@ function toNumbers(inputs: CalculationInputs) {
     will: Number(inputs.will || 0),
     power: Number(inputs.power || 0),
   };
+}
+
+// Validation messages helper: builds localized messages per field
+function validationMessages(fieldKey: keyof typeof i18n.attributes, maxValue: number) {
+  try {
+    const fieldLabel = i18n.attributes[fieldKey] ?? String(fieldKey);
+    const required = i18n.validation?.required ? i18n.validation.required.replace('{field}', fieldLabel) : `${fieldLabel} is required.`;
+    const min = i18n.validation?.min ? i18n.validation.min.replace('{min}', String(0)) : `Must not be less than 0.`;
+    const max = i18n.validation?.max ? i18n.validation.max.replace('{max}', String(maxValue)) : `Must not be greater than ${maxValue}.`;
+    return { required, min, max };
+  } catch (e) {
+    return { required: 'Required', min: 'Too small', max: 'Too large' };
+  }
 }
 
 // --- Calculation Logic ---

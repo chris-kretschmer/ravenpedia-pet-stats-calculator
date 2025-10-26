@@ -16,6 +16,8 @@
     "fetchFailed": "Talente konnten nicht geladen werden."
   },
   "validation": {
+    "required": "{field} ist erforderlich.",
+    "min": "Darf nicht kleiner als {min} sein.",
     "max": "Darf nicht größer als {max} sein."
   },
   "footer": {
