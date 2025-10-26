@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Pet Talent Calculator for Wizard101 | Ravenpedia",
+  "description": "Calculate the exact values of your Wizard101 pet's talents based on its base stats. Fast, easy, and accurate.",
+  "title": "Pet Talent Calculator for Wizard101",
+  "subTitle": "Enter your pet's base stats to calculate its talent values.",
+  "attributes": {
+    "strength": "Strength",
+    "intellect": "Intellect",
+    "agility": "Agility",
+    "will": "Will",
+    "power": "Power"
+  },
+  "clearButton": "Clear Inputs",
+  "errors": {
+    "errorTitle": "Error",
+    "fetchFailed": "Could not load talents."
+  },
+  "validation": {
+    "max": "Must not be greater than {max}."
+  },
+  "footer": {
+    "credit": "Wizard101 Community Wiki 'ravenpedia.xyz'",
+    "creditUrl": "https://ravenpedia.xyz/",
+    "impressum": "Legal Notice",
+    "impressumUrl": "https://ravenpedia.xyz/Impressum",
+    "privacy": "Privacy",
+    "privacyUrl": "https://ravenpedia.xyz/Datenschutz"
+  }
+}

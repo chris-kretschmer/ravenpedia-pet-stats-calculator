@@ -8,7 +8,9 @@ export interface TalentFactors {
 
 export interface Talent {
   id: string;
-  name_de: string;
+  name_de?: string;
+  name_en?: string;
+  name?: string;
   baseTalentValue: number;
   factors: TalentFactors;
 }
@@ -23,6 +25,8 @@ export interface CalculationInputs {
 
 export interface TalentGroup {
   groupId: string;
-  groupName_de: string;
+  groupName_de?: string;
+  groupName_en?: string;
+  groupName?: string;
   talents: Talent[];
 }

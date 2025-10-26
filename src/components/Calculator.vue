@@ -63,10 +63,10 @@
 
     <div v-if="results.length > 0" class="results-container">
       <div v-for="group in results" :key="group.groupId" class="result-group">
-        <h3 class="group-headline">{{ group.groupName_de }}</h3>
+        <h3 class="group-headline">{{ group.groupName }}</h3>
         <div class="result-grid">
           <div v-for="talent in group.talents" :key="talent.id" class="result-item">
-            <span class="talent-name">{{ talent.name_de }}</span>
+            <span class="talent-name">{{ talent.name }}</span>
             <span class="talent-value">{{ talent.roundedValue }} <small>({{ talent.value.toFixed(2) }})</small></span>
           </div>
         </div>
@@ -84,21 +84,33 @@
 import { ref, onMounted, watch } from 'vue';
 import type { Talent, CalculationInputs, TalentGroup } from '@/types/talent';
 import de from '../i18n/de.json';
+import en from '../i18n/en.json';
 
-// Accept optional props: i18n (override) and preloadedData (server-injected talents)
+// Accept optional props: i18n (override), lang (explicit), and preloadedData
 const props = defineProps<{
   i18n?: any;
+  lang?: 'de' | 'en';
   preloadedData?: {
     maxValues?: Record<string, number>;
-    talentGroups?: TalentGroup[];
+    talentGroups?: any[];
   } | null;
 }>();
 
-// Provide the centralized i18n object (single source of truth). Prefer passed prop if provided.
-const i18n = (props.i18n ?? de) as any;
+// Resolve language robustly: explicit prop > passed i18n.lang > client pathname > default 'de'
+let resolvedLang: 'de' | 'en' = 'de';
+if (props.lang === 'en') resolvedLang = 'en';
+else if (props.i18n && props.i18n.lang === 'en') resolvedLang = 'en';
+else if (typeof window !== 'undefined') {
+  const path = window.location.pathname || '';
+  if (path.startsWith('/en')) resolvedLang = 'en';
+}
+
+// Use provided i18n prop if available; otherwise pick en/de JSON based on resolvedLang
+const i18n = (props.i18n ?? (resolvedLang === 'en' ? en : de)) as any;
+const lang = resolvedLang;
 
 // --- Data ---
-const talentGroups = ref<TalentGroup[]>([]);
+const talentGroups = ref<any[]>([]);
 
 // --- maxValues (loaded from API or preloadedData) ---
 const maxValues = ref({
@@ -132,10 +144,11 @@ function clearInputs() {
 interface Result extends Talent {
   value: number;
   roundedValue: number;
+  name?: string;
 }
 interface ResultGroup {
   groupId: string;
-  groupName_de: string;
+  groupName: string;
   talents: Result[];
 }
 const results = ref<ResultGroup[]>([]);
@@ -155,7 +168,7 @@ function toNumbers(inputs: CalculationInputs) {
 }
 
 // --- Calculation Logic ---
-function calculateTalentValue(talent: Talent, inputs: { strength: number; intellect: number; agility: number; will: number; power: number }): number {
+function calculateTalentValue(talent: any, inputs: { strength: number; intellect: number; agility: number; will: number; power: number }): number {
   const { baseTalentValue, factors } = talent;
   const sumOfProducts =
     (inputs.strength * factors.strength) +
@@ -173,9 +186,11 @@ function recalculateResults(inputs: { strength: number; intellect: number; agili
     for (const talent of group.talents) {
       const value = calculateTalentValue(talent, inputs);
       const roundedValue = Math.round(Number(value.toFixed(2)));
-      groupResults.push({ ...talent, value, roundedValue });
+      const name = talent.name ?? talent.name_de ?? talent.name_en ?? '';
+      groupResults.push({ ...talent, value, roundedValue, name });
     }
-    newResults.push({ groupId: group.groupId, groupName_de: group.groupName_de, talents: groupResults });
+    const groupName = group.groupName ?? group.groupName_de ?? group.groupName_en ?? '';
+    newResults.push({ groupId: group.groupId, groupName, talents: groupResults });
   }
   results.value = newResults;
 }
@@ -183,10 +198,18 @@ function recalculateResults(inputs: { strength: number; intellect: number; agili
 // --- Lifecycle & Watcher ---
 onMounted(async () => {
   try {
-    // If server provided preloaded data, use it to avoid a client fetch
     if (props.preloadedData) {
       const data = props.preloadedData;
-      talentGroups.value = data.talentGroups || [];
+
+      talentGroups.value = (data.talentGroups || []).map((group: any) => ({
+        ...group,
+        groupName: group.groupName ?? (lang === 'en' ? group.groupName_en : group.groupName_de) ?? '',
+        talents: (group.talents || []).map((talent: any) => ({
+          ...talent,
+          name: talent.name ?? (lang === 'en' ? talent.name_en : talent.name_de) ?? '',
+        })),
+      }));
+
       if (data.maxValues) {
         maxValues.value = {
           strength: Number(data.maxValues.strength ?? maxValues.value.strength),
@@ -200,60 +223,65 @@ onMounted(async () => {
       return;
     }
 
-    // Fallback: fetch from API (existing behavior) but support base64-encoded responses
-    const response = await fetch('/api/talents');
+    const response = await fetch(`/api/talents?lang=${lang}`);
     if (!response.ok) {
       apiError.value = i18n.errors.fetchFailed;
       return;
     }
 
-    // If the server encoded the payload (e.g. base64), it will set X-Content-Encoded header
     const encodedHeader = response.headers.get('X-Content-Encoded');
     let data: any;
 
-      if (encodedHeader === 'base64') {
-        const encodedText = await response.text();
-        try {
-          if (encodedText.length < 3) {
-            throw new Error('Invalid response from API: too short');
-          }
-
-          const first = parseInt(encodedText.substring(0, 2), 10);
-          const second = parseInt(encodedText.charAt(2), 10);
-
-          if (isNaN(first) || isNaN(second) || first < 10 || first > 20 || second < 1 || second > 3) {
-            throw new Error('Invalid response from API: incorrect prefix format');
-          }
-
-          const N = Math.max(0, first - second);
-          const startIndex = 3 + N;
-
-          if (encodedText.length <= startIndex) {
-            throw new Error('Invalid response from API: payload missing');
-          }
-
-          const base64Payload = encodedText.slice(startIndex);
-
-          let jsonStr: string;
-          if (typeof atob === 'function') {
-            jsonStr = decodeURIComponent(escape(atob(base64Payload)));
-          } else {
-            jsonStr = Buffer.from(base64Payload, 'base64').toString('utf8');
-          }
-
-          data = JSON.parse(jsonStr);
-        } catch (e: any) {
-          apiError.value = `${i18n.errors.fetchFailed}: ${e.message || 'Unknown error'}`;
-          return;
+    if (encodedHeader === 'base64') {
+      const encodedText = await response.text();
+      try {
+        if (encodedText.length < 3) {
+          throw new Error('Invalid response from API: too short');
         }
-      } else {
-      // plain JSON response
+
+        const first = parseInt(encodedText.substring(0, 2), 10);
+        const second = parseInt(encodedText.charAt(2), 10);
+
+        if (isNaN(first) || isNaN(second) || first < 10 || first > 20 || second < 1 || second > 3) {
+          throw new Error('Invalid response from API: incorrect prefix format');
+        }
+
+        const N = Math.max(0, first - second);
+        const startIndex = 3 + N;
+
+        if (encodedText.length <= startIndex) {
+          throw new Error('Invalid response from API: payload missing');
+        }
+
+        const base64Payload = encodedText.slice(startIndex);
+
+        let jsonStr: string;
+        if (typeof atob === 'function') {
+          jsonStr = decodeURIComponent(escape(atob(base64Payload)));
+        } else {
+          jsonStr = Buffer.from(base64Payload, 'base64').toString('utf8');
+        }
+
+        data = JSON.parse(jsonStr);
+      } catch (e: any) {
+        apiError.value = `${i18n.errors.fetchFailed}: ${e.message || 'Unknown error'}`;
+        return;
+      }
+    } else {
       data = await response.json();
     }
 
-    // load talent groups
-    talentGroups.value = data.talentGroups || [];
-    // load maxValues from API if present
+    const normalizedGroups = (data.talentGroups || []).map((group: any) => ({
+      ...group,
+      groupName: group.groupName ?? (lang === 'en' ? group.groupName_en : group.groupName_de) ?? '',
+      talents: (group.talents || []).map((talent: any) => ({
+        ...talent,
+        name: talent.name ?? (lang === 'en' ? talent.name_en : talent.name_de) ?? '',
+      })),
+    }));
+
+    talentGroups.value = normalizedGroups;
+
     if (data.maxValues) {
       maxValues.value = {
         strength: Number(data.maxValues.strength ?? maxValues.value.strength),
@@ -263,7 +291,6 @@ onMounted(async () => {
         power: Number(data.maxValues.power ?? maxValues.value.power),
       };
     }
-    // Initial calculation using coerced numbers
     recalculateResults(toNumbers(formInputs.value));
   } catch (error: any) {
     apiError.value = i18n.errors.fetchFailed;

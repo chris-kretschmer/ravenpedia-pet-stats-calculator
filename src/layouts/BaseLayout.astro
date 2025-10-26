@@ -9,9 +9,10 @@ interface Props {
 }
 
 const {title, i18n} = Astro.props;
+const currentLang = i18n?.lang;
 ---
 
-<html lang="en">
+<html lang={currentLang || 'de'}>
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
@@ -21,6 +22,15 @@ const {title, i18n} = Astro.props;
     <title>{title}</title>
 </head>
 <body>
+<header class="site-header">
+    <div class="container">
+        <nav class="language-switcher">
+            <a href="/de/" class:list={[{ active: currentLang === 'de' }]}>DE</a>
+            <span class="separator">|</span>
+            <a href="/en/" class:list={[{ active: currentLang === 'en' }]}>EN</a>
+        </nav>
+    </div>
+</header>
 <main class="container">
     <slot/>
 </main>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Calculator from '@/components/Calculator.vue';
+import de from '@/i18n/de.json';
+import en from '@/i18n/en.json';
+import talents from '@/data/talents.json';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'de' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const i18n = lang === 'en' ? en : de;
+
+const localizedTalents = {
+  ...talents,
+  talentGroups: talents.talentGroups.map(group => ({
+    ...group,
+    groupName: lang === 'en' ? group.groupName_en : group.groupName_de,
+    talents: group.talents.map(talent => ({
+      ...talent,
+      name: lang === 'en' ? talent.name_en : talent.name_de,
+    })),
+  })),
+};
+---
+
+<BaseLayout title={i18n.pageTitle} i18n={{...i18n, lang}}>
+  <h1>{i18n.title}</h1>
+  <h2>{i18n.subTitle}</h2>
+
+    <Calculator :i18n={{...i18n, lang}} :preloadedData={localizedTalents} client:only="vue" :key="lang" />
+</BaseLayout>
+

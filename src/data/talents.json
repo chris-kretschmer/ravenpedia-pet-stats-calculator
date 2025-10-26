@@ -10,10 +10,12 @@
     {
       "groupId": "group-1",
       "groupName_de": "Schadenstalente",
+      "groupName_en": "en_Schadenstalente",
       "talents": [
         {
           "id": "schadens-gabe",
           "name_de": "Schadens-Gabe",
+          "name_en": "en_Schadens-Gabe",
           "baseTalentValue": 0.0075,
           "factors": {
             "strength": 2,
@@ -26,6 +28,7 @@
         {
           "id": "schadens-geber",
           "name_de": "Schadens-Geber",
+          "name_en": "en_Schadens-Geber",
           "baseTalentValue": 0.005,
           "factors": {
             "strength": 2,
@@ -38,6 +41,7 @@
         {
           "id": "schadens-gunst-u-bringer",
           "name_de": "Schadens-Gunst u. -bringer",
+          "name_en": "en_Schadens-Gunst u. -bringer",
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 2,
@@ -52,10 +56,12 @@
     {
       "groupId": "group-2",
       "groupName_de": "Resistenztalente",
+      "groupName_en": "en_Resistenztalente",
       "talents": [
         {
           "id": "resistenz-trotz",
           "name_de": "Resistenz-Trotz",
+          "name_en": "en_Resistenz-Trotz",
           "baseTalentValue": 0.012,
           "factors": {
             "strength": 2,
@@ -68,6 +74,7 @@
         {
           "id": "resistenz-fest",
           "name_de": "Resistenz-Fest",
+          "name_en": "en_Resistenz-Fest",
           "baseTalentValue": 0.008,
           "factors": {
             "strength": 2,
@@ -80,6 +87,7 @@
         {
           "id": "resistenz-frei",
           "name_de": "Resistenz-Frei",
+          "name_en": "en_Resistenz-Frei",
           "baseTalentValue": 0.004,
           "factors": {
             "strength": 2,
@@ -94,10 +102,12 @@
     {
       "groupId": "group-3",
       "groupName_de": "Zieltalente",
+      "groupName_en": "en_Zieltalente",
       "talents": [
         {
           "id": "zielen-schutze",
           "name_de": "Zielen-Schütze",
+          "name_en": "en_Zielen-Schütze",
           "baseTalentValue": 0.0075,
           "factors": {
             "strength": 0,
@@ -110,6 +120,7 @@
         {
           "id": "zielen-schuss",
           "name_de": "Zielen-Schuss",
+          "name_en": "en_Zielen-Schuss",
           "baseTalentValue": 0.005,
           "factors": {
             "strength": 0,
@@ -122,6 +133,7 @@
         {
           "id": "zielen-auge",
           "name_de": "Zielen-Auge",
+          "name_en": "en_Zielen-Auge",
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
@@ -136,10 +148,12 @@
     {
       "groupId": "group-4",
       "groupName_de": "Kritische Talente",
+      "groupName_en": "en_Kritische Talente",
       "talents": [
         {
           "id": "oberkritiker",
           "name_de": "Oberkritiker",
+          "name_en": "en_Oberkritiker",
           "baseTalentValue": 0.025,
           "factors": {
             "strength": 0,
@@ -152,6 +166,7 @@
         {
           "id": "kritisch-schlager-1",
           "name_de": "(Schulspezifisch)Kritisch-Schläger",
+          "name_en": "en_(Schulspezifisch)Kritisch-Schläger",
           "baseTalentValue": 0.02,
           "factors": {
             "strength": 0,
@@ -164,6 +179,7 @@
         {
           "id": "kritisch-schlager-2",
           "name_de": "Kritisch-Schläger",
+          "name_en": "en_Kritisch-Schläger",
           "baseTalentValue": 0.024,
           "factors": {
             "strength": 0,
@@ -176,6 +192,7 @@
         {
           "id": "kritiker",
           "name_de": "Kritiker",
+          "name_en": "en_Kritiker",
           "baseTalentValue": 0.018,
           "factors": {
             "strength": 0,
@@ -190,10 +207,12 @@
     {
       "groupId": "group-5",
       "groupName_de": "Blocktalente",
+      "groupName_en": "en_Blocktalente",
       "talents": [
         {
           "id": "verteidiger",
           "name_de": "Verteidiger",
+          "name_en": "en_Verteidiger",
           "baseTalentValue": 0.024,
           "factors": {
             "strength": 0,
@@ -206,6 +225,7 @@
         {
           "id": "blocker",
           "name_de": "Blocker",
+          "name_en": "en_Blocker",
           "baseTalentValue": 0.018,
           "factors": {
             "strength": 0,
@@ -220,10 +240,12 @@
     {
       "groupId": "group-6",
       "groupName_de": "Durchschlagstalente",
+      "groupName_en": "en_Durchschlagstalente",
       "talents": [
         {
           "id": "rustungsbrecher",
           "name_de": "Rüstungsbrecher",
+          "name_en": "en_Rüstungsbrecher",
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 2,
@@ -236,6 +258,7 @@
         {
           "id": "rustungspiekser",
           "name_de": "Rüstungspiekser",
+          "name_en": "en_Rüstungspiekser",
           "baseTalentValue": 0.0015,
           "factors": {
             "strength": 2,
@@ -250,10 +273,12 @@
     {
       "groupId": "group-7",
       "groupName_de": "Eingehende Heilungstalente",
+      "groupName_en": "en_Eingehende Heilungstalente",
       "talents": [
         {
           "id": "mediziener",
           "name_de": "Mediziener",
+          "name_en": "en_Mediziener",
           "baseTalentValue": 0.0065,
           "factors": {
             "strength": 2,
@@ -266,6 +291,7 @@
         {
           "id": "heiler",
           "name_de": "Heiler",
+          "name_en": "en_Heiler",
           "baseTalentValue": 0.003,
           "factors": {
             "strength": 2,
@@ -280,10 +306,12 @@
     {
       "groupId": "group-8",
       "groupName_de": "Abgehende Heilungstalente",
+      "groupName_en": "en_Abgehende Heilungstalente",
       "talents": [
         {
           "id": "lebendig",
           "name_de": "Lebendig",
+          "name_en": "en_Lebendig",
           "baseTalentValue": 0.0065,
           "factors": {
             "strength": 0,
@@ -296,6 +324,7 @@
         {
           "id": "gesund",
           "name_de": "Gesund",
+          "name_en": "en_Gesund",
           "baseTalentValue": 0.003,
           "factors": {
             "strength": 0,
@@ -310,10 +339,12 @@
     {
       "groupId": "group-9",
       "groupName_de": "Lebenserhöhungstalente",
+      "groupName_en": "en_Lebenserhöhungstalente",
       "talents": [
         {
           "id": "uberfluss",
           "name_de": "Überfluss",
+          "name_en": "en_Überfluss",
           "baseTalentValue": 0.12,
           "factors": {
             "strength": 0,
@@ -326,6 +357,7 @@
         {
           "id": "lebens-geschenk",
           "name_de": "Lebens-Geschenk",
+          "name_en": "en_Lebens-Geschenk",
           "baseTalentValue": 0.1,
           "factors": {
             "strength": 0,
@@ -338,6 +370,7 @@
         {
           "id": "mehr-vom-leben",
           "name_de": "Mehr vom Leben",
+          "name_en": "en_Mehr vom Leben",
           "baseTalentValue": 0.08,
           "factors": {
             "strength": 0,
@@ -350,6 +383,7 @@
         {
           "id": "lebens-plus",
           "name_de": "Lebens Plus",
+          "name_en": "en_Lebens Plus",
           "baseTalentValue": 0.06,
           "factors": {
             "strength": 0,
@@ -364,10 +398,12 @@
     {
       "groupId": "group-10",
       "groupName_de": "Manaerhöhungstalente",
+      "groupName_en": "en_Manaerhöhungstalente",
       "talents": [
         {
           "id": "mana-fulle",
           "name_de": "Mana-Fülle",
+          "name_en": "en_Mana-Fülle",
           "baseTalentValue": 0.1,
           "factors": {
             "strength": 0,
@@ -380,6 +416,7 @@
         {
           "id": "mana-geschenk",
           "name_de": "Mana-Geschenk",
+          "name_en": "en_Mana-Geschenk",
           "baseTalentValue": 0.08,
           "factors": {
             "strength": 0,
@@ -392,6 +429,7 @@
         {
           "id": "mana-extra",
           "name_de": "Mana-Extra",
+          "name_en": "en_Mana-Extra",
           "baseTalentValue": 0.06,
           "factors": {
             "strength": 0,
@@ -404,6 +442,7 @@
         {
           "id": "mana-plus",
           "name_de": "Mana-Plus",
+          "name_en": "en_Mana-Plus",
           "baseTalentValue": 0.04,
           "factors": {
             "strength": 0,
@@ -418,10 +457,12 @@
     {
       "groupId": "group-11",
       "groupName_de": "Super-Piperhöhungstalente",
+      "groupName_en": "en_Super-Piperhöhungstalente",
       "talents": [
         {
           "id": "pip-plus",
           "name_de": "Pip-Plus",
+          "name_en": "en_Pip-Plus",
           "baseTalentValue": 0.004,
           "factors": {
             "strength": 2,
@@ -436,10 +477,12 @@
     {
       "groupId": "group-12",
       "groupName_de": "Pip-Umwandlungstalente",
+      "groupName_en": "en_Pip-Umwandlungstalente",
       "talents": [
         {
           "id": "pip-sparer",
           "name_de": "Pip-Sparer",
+          "name_en": "en_Pip-Sparer",
           "baseTalentValue": 0.024,
           "factors": {
             "strength": 0,
@@ -452,6 +495,7 @@
         {
           "id": "pip-bewahrer",
           "name_de": "Pip-Bewahrer",
+          "name_en": "en_Pip-Bewahrer",
           "baseTalentValue": 0.018,
           "factors": {
             "strength": 0,
@@ -466,10 +510,12 @@
     {
       "groupId": "group-13",
       "groupName_de": "Betäubungsresistenztalente",
+      "groupName_en": "en_Betäubungsresistenztalente",
       "talents": [
         {
           "id": "schwer-zu-betauben",
           "name_de": "Schwer zu betäuben",
+          "name_en": "en_Schwer zu betäuben",
           "baseTalentValue": 0.008,
           "factors": {
             "strength": 2,
@@ -482,6 +528,7 @@
         {
           "id": "kaum-zu-betauben",
           "name_de": "Kaum zu Betäuben",
+          "name_en": "en_Kaum zu Betäuben",
           "baseTalentValue": 0.004,
           "factors": {
             "strength": 2,
@@ -496,10 +543,12 @@
     {
       "groupId": "group-14",
       "groupName_de": "Angelglückstalente",
+      "groupName_en": "en_Angelglückstalente",
       "talents": [
         {
           "id": "angelgluck-episch",
           "name_de": "Angelglück-Episch",
+          "name_en": "en_Angelglück-Episch",
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,
@@ -512,6 +561,7 @@
         {
           "id": "angelgluck",
           "name_de": "Angelglück",
+          "name_en": "en_Angelglück",
           "baseTalentValue": 0.0025,
           "factors": {
             "strength": 0,

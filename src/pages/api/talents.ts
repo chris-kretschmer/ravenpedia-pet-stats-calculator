@@ -19,10 +19,24 @@ function randomAlphaNumeric(length: number): string {
 }
 
 export const GET: APIRoute = ({ request }) => {
-  const json = JSON.stringify(talents);
+  const url = new URL(request.url);
+  const lang = url.searchParams.get('lang') === 'en' ? 'en' : 'de';
+
+  const localizedTalents = {
+    ...talents,
+    talentGroups: talents.talentGroups.map(group => ({
+      ...group,
+      groupName: lang === 'en' ? group.groupName_en : group.groupName_de,
+      talents: group.talents.map(talent => ({
+        ...talent,
+        name: lang === 'en' ? talent.name_en : talent.name_de,
+      })),
+    })),
+  };
+
+  const json = JSON.stringify(localizedTalents);
 
   try {
-    const url = new URL(request.url);
     const rawParam = url.searchParams.get('raw') === '1';
     const accept = (request.headers.get('accept') || '').toLowerCase();
 
