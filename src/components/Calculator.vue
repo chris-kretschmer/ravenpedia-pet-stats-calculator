@@ -214,10 +214,6 @@ onMounted(async () => {
       if (encodedHeader === 'base64') {
         const encodedText = await response.text();
         try {
-          // New prefix scheme:
-          // encodedText = <firstDigit><secondDigit><N random chars><base64Payload>
-          // firstDigit = 1..9, secondDigit = 1..3
-          // N = max(0, firstDigit - secondDigit)
           if (encodedText.length < 3) {
             throw new Error('Invalid response from API: too short');
           }
@@ -237,9 +233,14 @@ onMounted(async () => {
           }
 
           const base64Payload = encodedText.slice(startIndex);
-          const jsonStr = (typeof atob === 'function')
-            ? atob(base64Payload)
-            : Buffer.from(base64Payload, 'base64').toString('utf8');
+
+          let jsonStr: string;
+          if (typeof atob === 'function') {
+            jsonStr = decodeURIComponent(escape(atob(base64Payload)));
+          } else {
+            jsonStr = Buffer.from(base64Payload, 'base64').toString('utf8');
+          }
+
           data = JSON.parse(jsonStr);
         } catch (e: any) {
           apiError.value = `${i18n.errors.fetchFailed}: ${e.message || 'Unknown error'}`;
