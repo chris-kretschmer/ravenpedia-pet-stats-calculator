@@ -1,71 +1,230 @@
 @import '@formkit/themes/genesis';
 
-/* Basic reset and dark mode */
 :root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color-scheme: light dark;
-  background-color: #1a1a1a;
-  color: #f0f0f0;
+    color-scheme: light dark;
+
+    --dark-bg-color: #161618;
+    --light-bg-color: #faf8f8;
+    
+    --dark-text-color: #d4d4d4;
+    --light-text-color: #4e4e4e;
+    
+    --result-bg-color: #333;
+    --result-bg-color-light: transparent;
+
+    --bg-color: var(--dark-bg-color);
+    --text-color: var(--dark-text-color);
 }
 
 body {
-  margin: 0;
-  padding: 1rem;
-  min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    min-height: 100vh;
 }
 
-/* Your requested layout container */
+.theme-root {
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.theme-switch {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: 48px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    cursor: pointer;
+    transition: background 150ms ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch::before {
+    content: "☾";
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1f1f1f;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transform: translateX(0);
+    transition: transform 150ms ease, background 150ms ease, color 150ms ease;
+}
+
+.theme-toggle:checked ~ .theme-root {
+    --bg-color: var(--light-bg-color);
+    --text-color: var(--light-text-color);
+    --result-bg-color: var(--result-bg-color-light);
+}
+
+.theme-toggle:checked + .theme-switch {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.theme-toggle:checked + .theme-switch::before {
+    transform: translateX(20px);
+    background: #fff;
+    color: #111;
+    content: "☀";
+}
+
 .container {
-  max-width: 1280px;
-  margin-inline: auto;
-  padding-inline: 1rem;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1rem;
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 h2 {
-  font-size: 1.3rem;
-  font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 400;
 }
 
-/* Set number input text color to white */
 .formkit-input[type="number"] {
-  color: white;
+    color: var(--text-color);
 }
 
-/* Footer styles */
 .site-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin-top: 2rem;
-  padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 2rem;
+    padding: 1rem 0;
 }
 
 .footer-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .site-footer .footer-credit,
 .site-footer .footer-impressum {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #cfcfcf;
+    margin: 0;
+    font-size: 0.95rem;
+    color: color-mix(in srgb, var(--text-color) 70%, black);
 }
 
 .site-footer a {
-  color: inherit;
-  text-decoration: underline;
+    color: inherit;
+    text-decoration: underline;
 }
 
 @media (min-width: 640px) {
-  .site-footer {
+    .site-footer {
+        align-items: center;
+    }
+}
+
+.calculator-wrapper {
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #444;
+    margin-top: 2rem;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem; /* Adjusted margin */
+}
+
+.clear-button {
+    background-color: #4a4a4a;
+    color: white;
+    border: 1px solid #666;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: background-color 0.2s;
+}
+
+.clear-button:hover {
+    background-color: #5a5a5a;
+}
+
+.results-container {
+    margin-top: 2rem;
+}
+
+.result-group {
+    margin-bottom: 2rem;
+}
+
+.group-headline {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #444;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-  }
+    background-color: var(--result-bg-color);
+    border: 1px solid var(--text-color);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+}
+
+
+.talent-name {
+    font-weight: 500;
+}
+
+.talent-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4ade80;
+}
+
+.talent-value small {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-left: 0.25rem;
+}
+
+.error-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #333;
+    border-radius: 8px;
+    border-left: 5px solid #f87171;
+    color: #f87171;
 }

@@ -22,44 +22,50 @@ const currentLang = i18n?.lang;
     <title>{title}</title>
 </head>
 <body>
-<header class="site-header">
-    <div class="container">
-        <nav class="language-switcher">
-            <a href="/de/" class:list={[{active: currentLang === 'de'}]}>DE</a>
-            <span class="separator">|</span>
-            <a href="/en/" class:list={[{active: currentLang === 'en'}]}>EN</a>
-        </nav>
+    <!-- Theme toggle (CSS-only) -->
+    <input id="theme-toggle" class="theme-toggle" type="checkbox" aria-label="Toggle color mode" />
+    <label for="theme-toggle" class="theme-switch" aria-hidden="true"></label>
+
+    <div class="theme-root">
+        <header class="site-header">
+            <div class="container">
+                <nav class="language-switcher">
+                    <a href="/de/" class:list={[{active: currentLang === 'de'}]}>DE</a>
+                    <span class="separator">|</span>
+                    <a href="/en/" class:list={[{active: currentLang === 'en'}]}>EN</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <slot/>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-links">
+                    {i18n?.footer?.creditUrl ? (
+                            <a class="footer-credit" href={i18n.footer.creditUrl} target="_blank"
+                               rel="noopener noreferrer">{i18n.footer.credit}</a>
+                    ) : i18n?.footer?.credit ? (
+                            <span class="footer-credit">{i18n.footer.credit}</span>
+                    ) : null}
+
+                    {i18n?.footer?.impressumUrl ? (
+                            <a class="footer-impressum" href={i18n.footer.impressumUrl} target="_blank"
+                               rel="noopener noreferrer">{i18n.footer.impressum}</a>
+                    ) : i18n?.footer?.impressum ? (
+                            <span class="footer-impressum">{i18n.footer.impressum}</span>
+                    ) : null}
+
+                    {i18n?.footer?.privacyUrl ? (
+                            <a class="footer-impressum" href={i18n.footer.privacyUrl} target="_blank"
+                               rel="noopener noreferrer">{i18n.footer.privacy}</a>
+                    ) : i18n?.footer?.privacy ? (
+                            <span class="footer-impressum">{i18n.footer.privacy}</span>
+                    ) : null}
+                </div>
+            </div>
+        </footer>
     </div>
-</header>
-<main class="container">
-    <slot/>
-</main>
-
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-links">
-            {i18n?.footer?.creditUrl ? (
-                    <a class="footer-credit" href={i18n.footer.creditUrl} target="_blank"
-                       rel="noopener noreferrer">{i18n.footer.credit}</a>
-            ) : i18n?.footer?.credit ? (
-                    <span class="footer-credit">{i18n.footer.credit}</span>
-            ) : null}
-
-            {i18n?.footer?.impressumUrl ? (
-                    <a class="footer-impressum" href={i18n.footer.impressumUrl} target="_blank"
-                       rel="noopener noreferrer">{i18n.footer.impressum}</a>
-            ) : i18n?.footer?.impressum ? (
-                    <span class="footer-impressum">{i18n.footer.impressum}</span>
-            ) : null}
-
-            {i18n?.footer?.privacyUrl ? (
-                    <a class="footer-impressum" href={i18n.footer.privacyUrl} target="_blank"
-                       rel="noopener noreferrer">{i18n.footer.privacy}</a>
-            ) : i18n?.footer?.privacy ? (
-                    <span class="footer-impressum">{i18n.footer.privacy}</span>
-            ) : null}
-        </div>
-    </div>
-</footer>
 </body>
 </html>
