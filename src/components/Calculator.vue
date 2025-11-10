@@ -3,59 +3,59 @@
     <FormKit type="form" v-model="formInputs" :actions="false">
       <div class="input-grid">
         <FormKit
-          type="number"
-          name="strength"
-          :label="i18n.attributes.strength"
-          placeholder="0"
-          v-model="formInputs.strength"
-          :validation="`required|min:0|max:${maxValues.strength}`"
-          min="0"
-          :max="maxValues.strength"
-          :validation-messages="validationMessages('strength', maxValues.strength)"
+            type="number"
+            name="strength"
+            :label="i18n.attributes.strength"
+            placeholder="0"
+            v-model="formInputs.strength"
+            :validation="`required|min:0|max:${maxValues.strength}`"
+            min="0"
+            :max="maxValues.strength"
+            :validation-messages="validationMessages('strength', maxValues.strength)"
         />
         <FormKit
-          type="number"
-          name="intellect"
-          :label="i18n.attributes.intellect"
-          placeholder="0"
-          v-model="formInputs.intellect"
-          :validation="`required|min:0|max:${maxValues.intellect}`"
-          min="0"
-          :max="maxValues.intellect"
-          :validation-messages="validationMessages('intellect', maxValues.intellect)"
+            type="number"
+            name="intellect"
+            :label="i18n.attributes.intellect"
+            placeholder="0"
+            v-model="formInputs.intellect"
+            :validation="`required|min:0|max:${maxValues.intellect}`"
+            min="0"
+            :max="maxValues.intellect"
+            :validation-messages="validationMessages('intellect', maxValues.intellect)"
         />
         <FormKit
-          type="number"
-          name="agility"
-          :label="i18n.attributes.agility"
-          placeholder="0"
-          v-model="formInputs.agility"
-          :validation="`required|min:0|max:${maxValues.agility}`"
-          min="0"
-          :max="maxValues.agility"
-          :validation-messages="validationMessages('agility', maxValues.agility)"
+            type="number"
+            name="agility"
+            :label="i18n.attributes.agility"
+            placeholder="0"
+            v-model="formInputs.agility"
+            :validation="`required|min:0|max:${maxValues.agility}`"
+            min="0"
+            :max="maxValues.agility"
+            :validation-messages="validationMessages('agility', maxValues.agility)"
         />
         <FormKit
-          type="number"
-          name="will"
-          :label="i18n.attributes.will"
-          placeholder="0"
-          v-model="formInputs.will"
-          :validation="`required|min:0|max:${maxValues.will}`"
-          min="0"
-          :max="maxValues.will"
-          :validation-messages="validationMessages('will', maxValues.will)"
+            type="number"
+            name="will"
+            :label="i18n.attributes.will"
+            placeholder="0"
+            v-model="formInputs.will"
+            :validation="`required|min:0|max:${maxValues.will}`"
+            min="0"
+            :max="maxValues.will"
+            :validation-messages="validationMessages('will', maxValues.will)"
         />
         <FormKit
-          type="number"
-          name="power"
-          :label="i18n.attributes.power"
-          placeholder="0"
-          v-model="formInputs.power"
-          :validation="`required|min:0|max:${maxValues.power}`"
-          min="0"
-          :max="maxValues.power"
-          :validation-messages="validationMessages('power', maxValues.power)"
+            type="number"
+            name="power"
+            :label="i18n.attributes.power"
+            placeholder="0"
+            v-model="formInputs.power"
+            :validation="`required|min:0|max:${maxValues.power}`"
+            min="0"
+            :max="maxValues.power"
+            :validation-messages="validationMessages('power', maxValues.power)"
         />
       </div>
       <button type="button" @click="clearInputs" class="clear-button">{{ i18n.clearButton }}</button>
@@ -81,8 +81,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import type { Talent, CalculationInputs } from '@/types/talent';
+import {ref, onMounted, watch} from 'vue';
+import type {Talent, CalculationInputs} from '@/types/talent';
 import de from '../i18n/de.json';
 import en from '../i18n/en.json';
 
@@ -107,7 +107,7 @@ else if (typeof window !== 'undefined') {
 
 // Use provided i18n prop if available; otherwise pick en/de JSON based on resolvedLang
 const baseLocale = resolvedLang === 'en' ? en : de;
-const i18n = ({ ...baseLocale, ...(props.i18n ?? {}) }) as any;
+const i18n = ({...baseLocale, ...(props.i18n ?? {})}) as any;
 const lang = resolvedLang;
 
 // --- Data ---
@@ -147,11 +147,13 @@ interface Result extends Talent {
   roundedValue: number;
   name?: string;
 }
+
 interface ResultGroup {
   groupId: string;
   groupName: string;
   talents: Result[];
 }
+
 const results = ref<ResultGroup[]>([]);
 
 // --- API State ---
@@ -175,25 +177,37 @@ function validationMessages(fieldKey: keyof typeof i18n.attributes, maxValue: nu
     const required = i18n.validation?.required ? i18n.validation.required.replace('{field}', fieldLabel) : `${fieldLabel} is required.`;
     const min = i18n.validation?.min ? i18n.validation.min.replace('{min}', String(0)) : `Must not be less than 0.`;
     const max = i18n.validation?.max ? i18n.validation.max.replace('{max}', String(maxValue)) : `Must not be greater than ${maxValue}.`;
-    return { required, min, max };
+    return {required, min, max};
   } catch (e) {
-    return { required: 'Required', min: 'Too small', max: 'Too large' };
+    return {required: 'Required', min: 'Too small', max: 'Too large'};
   }
 }
 
 // --- Calculation Logic ---
-function calculateTalentValue(talent: any, inputs: { strength: number; intellect: number; agility: number; will: number; power: number }): number {
-  const { baseTalentValue, factors } = talent;
+function calculateTalentValue(talent: any, inputs: {
+  strength: number;
+  intellect: number;
+  agility: number;
+  will: number;
+  power: number
+}): number {
+  const {baseTalentValue, factors} = talent;
   const sumOfProducts =
-    (inputs.strength * factors.strength) +
-    (inputs.intellect * factors.intellect) +
-    (inputs.agility * factors.agility) +
-    (inputs.will * factors.will) +
-    (inputs.power * factors.power);
+      (inputs.strength * factors.strength) +
+      (inputs.intellect * factors.intellect) +
+      (inputs.agility * factors.agility) +
+      (inputs.will * factors.will) +
+      (inputs.power * factors.power);
   return baseTalentValue * sumOfProducts;
 }
 
-function recalculateResults(inputs: { strength: number; intellect: number; agility: number; will: number; power: number }) {
+function recalculateResults(inputs: {
+  strength: number;
+  intellect: number;
+  agility: number;
+  will: number;
+  power: number
+}) {
   const newResults: ResultGroup[] = [];
   for (const group of talentGroups.value) {
     const groupResults: Result[] = [];
@@ -201,10 +215,10 @@ function recalculateResults(inputs: { strength: number; intellect: number; agili
       const value = calculateTalentValue(talent, inputs);
       const roundedValue = Math.round(Number(value.toFixed(2)));
       const name = talent.name ?? talent.name_de ?? talent.name_en ?? '';
-      groupResults.push({ ...talent, value, roundedValue, name });
+      groupResults.push({...talent, value, roundedValue, name});
     }
     const groupName = group.groupName ?? group.groupName_de ?? group.groupName_en ?? '';
-    newResults.push({ groupId: group.groupId, groupName, talents: groupResults });
+    newResults.push({groupId: group.groupId, groupName, talents: groupResults});
   }
   results.value = newResults;
 }
@@ -315,16 +329,16 @@ watch(formInputs, (newInputs) => {
   const nums = toNumbers(newInputs);
 
   const isValid =
-    !isNaN(nums.strength) && nums.strength >= 0 && nums.strength <= maxValues.value.strength &&
-    !isNaN(nums.intellect) && nums.intellect >= 0 && nums.intellect <= maxValues.value.intellect &&
-    !isNaN(nums.agility) && nums.agility >= 0 && nums.agility <= maxValues.value.agility &&
-    !isNaN(nums.will) && nums.will >= 0 && nums.will <= maxValues.value.will &&
-    !isNaN(nums.power) && nums.power >= 0 && nums.power <= maxValues.value.power;
+      !isNaN(nums.strength) && nums.strength >= 0 && nums.strength <= maxValues.value.strength &&
+      !isNaN(nums.intellect) && nums.intellect >= 0 && nums.intellect <= maxValues.value.intellect &&
+      !isNaN(nums.agility) && nums.agility >= 0 && nums.agility <= maxValues.value.agility &&
+      !isNaN(nums.will) && nums.will >= 0 && nums.will <= maxValues.value.will &&
+      !isNaN(nums.power) && nums.power >= 0 && nums.power <= maxValues.value.power;
 
   if (isValid) {
     recalculateResults(nums);
   }
-}, { deep: true });
+}, {deep: true});
 </script>
 
 <style scoped>
