@@ -18,15 +18,21 @@
     --text-color: var(--dark-text-color);
 }
 
+html {
+    height: 100%;
+    background-color: transparent;
+}
+
 body {
     margin: 0;
-    padding: 1rem;
+    padding: 0;
     min-height: 100vh;
+    background-color: transparent;
 }
 
 .theme-root {
     min-height: 100vh;
-    padding: 1rem;
+    padding: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 200ms ease, color 200ms ease;
@@ -93,7 +99,7 @@ body {
 .container {
     max-width: 1280px;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding: 1rem;
 }
 
 h1 {
@@ -153,7 +159,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 1rem; /* Adjusted margin */
+    margin-bottom: 1rem;
 }
 
 .clear-button {
@@ -216,7 +222,7 @@ h2 {
 
 .talent-value small {
     font-size: 0.9rem;
-    color: #a0a0a0;
+    color: var(--text-color);
     margin-left: 0.25rem;
 }
 
