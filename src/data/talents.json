@@ -40,7 +40,7 @@
         },
         {
           "id": "schadens-gunst-u-bringer",
-          "name_de": "(Schul-)Gunst u Schmerzbringer",
+          "name_de": "(Schul-)Gunst und Schmerzbringer",
           "name_en": "en_Schadens-Gunst u. -bringer",
           "baseTalentValue": 0.0025,
           "factors": {
