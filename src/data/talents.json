@@ -106,7 +106,7 @@
       "talents": [
         {
           "id": "zielen-schutze",
-          "name_de": "Zielen-Schütze",
+          "name_de": "(Schul-)Schütze",
           "name_en": "en_Zielen-Schütze",
           "baseTalentValue": 0.0075,
           "factors": {
@@ -119,7 +119,7 @@
         },
         {
           "id": "zielen-schuss",
-          "name_de": "Zielen-Schuss",
+          "name_de": "Schul- und Scharfer Schuss",
           "name_en": "en_Zielen-Schuss",
           "baseTalentValue": 0.005,
           "factors": {
@@ -132,7 +132,7 @@
         },
         {
           "id": "zielen-auge",
-          "name_de": "Zielen-Auge",
+          "name_de": "Schul- und Scharfes Auge",
           "name_en": "en_Zielen-Auge",
           "baseTalentValue": 0.0025,
           "factors": {
