@@ -14,7 +14,7 @@
       "talents": [
         {
           "id": "schadens-gabe",
-          "name_de": "Schadens-Gabe",
+          "name_de": "(Schul-)Gabe",
           "name_en": "en_Schadens-Gabe",
           "baseTalentValue": 0.0075,
           "factors": {
@@ -27,7 +27,7 @@
         },
         {
           "id": "schadens-geber",
-          "name_de": "Schadens-Geber",
+          "name_de": "(Schul-) und Schmerzgeber",
           "name_en": "en_Schadens-Geber",
           "baseTalentValue": 0.005,
           "factors": {
@@ -40,7 +40,7 @@
         },
         {
           "id": "schadens-gunst-u-bringer",
-          "name_de": "Schadens-Gunst u. -bringer",
+          "name_de": "(Schul-)Gunst u Schmerzbringer",
           "name_en": "en_Schadens-Gunst u. -bringer",
           "baseTalentValue": 0.0025,
           "factors": {
@@ -60,7 +60,7 @@
       "talents": [
         {
           "id": "resistenz-trotz",
-          "name_de": "(Schul)-Bann",
+          "name_de": "(Schul-)Bann",
           "name_en": "(School)-Trotz",
           "baseTalentValue": 0.012,
           "factors": {
