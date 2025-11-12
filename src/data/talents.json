@@ -60,8 +60,8 @@
       "talents": [
         {
           "id": "resistenz-trotz",
-          "name_de": "Resistenz-Trotz",
-          "name_en": "en_Resistenz-Trotz",
+          "name_de": "(Schul)-Bann",
+          "name_en": "(School)-Trotz",
           "baseTalentValue": 0.012,
           "factors": {
             "strength": 2,
@@ -73,7 +73,7 @@
         },
         {
           "id": "resistenz-fest",
-          "name_de": "Resistenz-Fest",
+          "name_de": "Schul- und Spruchfest",
           "name_en": "en_Resistenz-Fest",
           "baseTalentValue": 0.008,
           "factors": {
@@ -86,7 +86,7 @@
         },
         {
           "id": "resistenz-frei",
-          "name_de": "Resistenz-Frei",
+          "name_de": "Schul- und Spruchfrei",
           "name_en": "en_Resistenz-Frei",
           "baseTalentValue": 0.004,
           "factors": {
