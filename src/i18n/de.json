@@ -1,8 +1,8 @@
 {
   "pageTitle": "Haustier Talent Rechner für Wizard101 | Ravenpedia",
   "description": "Berechne die genauen Werte der Talente deines Wizard101-Haustiers basierend auf seinen Grundwerten. Schnell, einfach und präzise.",
-  "title": "Wizard101 Haustier-Werte Rechner",
-  "subTitle": "Mit unserem Rechner lässt sich genau berechnen, welche Talentwerte dein Haustier erreichen kann. Gib unten die Basiswerte des Haustieres ein und es werden automatisch die Talentwerte berechnet. Im Spiel werden Werte ab ,5 aufgerundet, darunter abgerundet.",
+  "title": "Wizard101 Haustier-Talentwerte Rechner",
+  "subTitle": "Mit diesem Rechner lässt sich genau berechnen, welche Talentwerte dein Haustier erreichen kann. Gib unten die Basiswerte des Haustieres ein und es werden automatisch die Talentwerte berechnet. Im Spiel werden Werte ab ,5 aufgerundet, alles darunter wird abgerundet.",
   "attributes": {
     "strength": "Stärke",
     "intellect": "Intelligenz",
