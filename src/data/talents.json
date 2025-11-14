@@ -40,7 +40,7 @@
         },
         {
           "id": "schadens-gunst-u-bringer",
-          "name_de": "(Schul-)Gunst und Schmerzbringer",
+          "name_de": "[Schul-]Gunst und Schmerzbringer",
           "name_en": "en_Schadens-Gunst u. -bringer",
           "baseTalentValue": 0.0025,
           "factors": {
@@ -60,7 +60,7 @@
       "talents": [
         {
           "id": "resistenz-trotz",
-          "name_de": "(Schul-)Bann",
+          "name_de": "[Schul-]Bann",
           "name_en": "(School)-Trotz",
           "baseTalentValue": 0.012,
           "factors": {
@@ -73,7 +73,7 @@
         },
         {
           "id": "resistenz-fest",
-          "name_de": "Schul- und Spruchfest",
+          "name_de": "[Schul-] und Spruchfest",
           "name_en": "en_Resistenz-Fest",
           "baseTalentValue": 0.008,
           "factors": {
@@ -86,7 +86,7 @@
         },
         {
           "id": "resistenz-frei",
-          "name_de": "Schul- und Spruchfrei",
+          "name_de": "[Schul-] und Spruchfrei",
           "name_en": "en_Resistenz-Frei",
           "baseTalentValue": 0.004,
           "factors": {
@@ -106,7 +106,7 @@
       "talents": [
         {
           "id": "zielen-schutze",
-          "name_de": "(Schul-)Schütze",
+          "name_de": "[Schul-]Schütze",
           "name_en": "en_Zielen-Schütze",
           "baseTalentValue": 0.0075,
           "factors": {
@@ -119,7 +119,7 @@
         },
         {
           "id": "zielen-schuss",
-          "name_de": "Schul- und Scharfer Schuss",
+          "name_de": "[Schul-] und Scharfer Schuss",
           "name_en": "en_Zielen-Schuss",
           "baseTalentValue": 0.005,
           "factors": {
@@ -132,7 +132,7 @@
         },
         {
           "id": "zielen-auge",
-          "name_de": "Schul- und Scharfes Auge",
+          "name_de": "[Schul-] und Scharfes Auge",
           "name_en": "en_Zielen-Auge",
           "baseTalentValue": 0.0025,
           "factors": {
