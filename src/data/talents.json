@@ -14,7 +14,7 @@
       "talents": [
         {
           "id": "schadens-gabe",
-          "name_de": "(Schul-)Gabe",
+          "name_de": "[Schul-]Gabe",
           "name_en": "en_Schadens-Gabe",
           "baseTalentValue": 0.0075,
           "factors": {
@@ -27,7 +27,7 @@
         },
         {
           "id": "schadens-geber",
-          "name_de": "(Schul-) und Schmerzgeber",
+          "name_de": "[Schul-] und Schmerzgeber",
           "name_en": "en_Schadens-Geber",
           "baseTalentValue": 0.005,
           "factors": {
