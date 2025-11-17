@@ -165,7 +165,7 @@
         },
         {
           "id": "kritisch-schlager-1",
-          "name_de": "(Schulspezifisch)Kritisch-Schläger",
+          "name_de": "[Schul-]-Schläger",
           "name_en": "en_(Schulspezifisch)Kritisch-Schläger",
           "baseTalentValue": 0.02,
           "factors": {
@@ -178,7 +178,7 @@
         },
         {
           "id": "kritisch-schlager-2",
-          "name_de": "Kritisch-Schläger",
+          "name_de": "[Schul-]-Recke",
           "name_en": "en_Kritisch-Schläger",
           "baseTalentValue": 0.024,
           "factors": {
@@ -257,8 +257,8 @@
         },
         {
           "id": "rustungspiekser",
-          "name_de": "Rüstungspiekser",
-          "name_en": "en_Rüstungspiekser",
+          "name_de": "Rüstungspikser",
+          "name_en": "en_Rüstungspikser",
           "baseTalentValue": 0.0015,
           "factors": {
             "strength": 2,
@@ -277,8 +277,8 @@
       "talents": [
         {
           "id": "mediziener",
-          "name_de": "Mediziener",
-          "name_en": "en_Mediziener",
+          "name_de": "Mediziner",
+          "name_en": "en_Mediziner",
           "baseTalentValue": 0.0065,
           "factors": {
             "strength": 2,
@@ -290,8 +290,8 @@
         },
         {
           "id": "heiler",
-          "name_de": "Heiler",
-          "name_en": "en_Heiler",
+          "name_de": "Verarzter",
+          "name_en": "Verarzter",
           "baseTalentValue": 0.003,
           "factors": {
             "strength": 2,
@@ -356,7 +356,7 @@
         },
         {
           "id": "lebens-geschenk",
-          "name_de": "Lebens-Geschenk",
+          "name_de": "Lebensgeschenk",
           "name_en": "en_Lebens-Geschenk",
           "baseTalentValue": 0.1,
           "factors": {
@@ -382,7 +382,7 @@
         },
         {
           "id": "lebens-plus",
-          "name_de": "Lebens Plus",
+          "name_de": "Lebens-Plus",
           "name_en": "en_Lebens Plus",
           "baseTalentValue": 0.06,
           "factors": {
@@ -402,7 +402,7 @@
       "talents": [
         {
           "id": "mana-fulle",
-          "name_de": "Mana-Fülle",
+          "name_de": "Manafülle",
           "name_en": "en_Mana-Fülle",
           "baseTalentValue": 0.1,
           "factors": {
@@ -415,7 +415,7 @@
         },
         {
           "id": "mana-geschenk",
-          "name_de": "Mana-Geschenk",
+          "name_de": "Manageschenk",
           "name_en": "en_Mana-Geschenk",
           "baseTalentValue": 0.08,
           "factors": {
@@ -428,7 +428,7 @@
         },
         {
           "id": "mana-extra",
-          "name_de": "Mana-Extra",
+          "name_de": "Extramana",
           "name_en": "en_Mana-Extra",
           "baseTalentValue": 0.06,
           "factors": {
@@ -527,7 +527,7 @@
         },
         {
           "id": "kaum-zu-betauben",
-          "name_de": "Kaum zu Betäuben",
+          "name_de": "Kaum zu betäuben",
           "name_en": "en_Kaum zu Betäuben",
           "baseTalentValue": 0.004,
           "factors": {
@@ -547,7 +547,7 @@
       "talents": [
         {
           "id": "angelgluck-episch",
-          "name_de": "Angelglück-Episch",
+          "name_de": "Episches Angelglück",
           "name_en": "en_Angelglück-Episch",
           "baseTalentValue": 0.0025,
           "factors": {
