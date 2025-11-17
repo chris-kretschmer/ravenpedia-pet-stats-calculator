@@ -165,7 +165,7 @@
         },
         {
           "id": "kritisch-schlager-1",
-          "name_de": "[Schul-]-Schläger",
+          "name_de": "[Schul-]Schläger",
           "name_en": "en_(Schulspezifisch)Kritisch-Schläger",
           "baseTalentValue": 0.02,
           "factors": {
@@ -178,7 +178,7 @@
         },
         {
           "id": "kritisch-schlager-2",
-          "name_de": "[Schul-]-Recke",
+          "name_de": "[Schul-]Recke",
           "name_en": "en_Kritisch-Schläger",
           "baseTalentValue": 0.024,
           "factors": {
